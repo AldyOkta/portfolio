@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        /* Gunakan warna hex langsung atau warna standar tailwind dulu */
+        @apply bg-[#050709] text-white font-sans;
+    }
+}
+
+/* Custom scrollbar supaya tetap estetik */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050709;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8750f7;
+    border-radius: 5px;
+}
