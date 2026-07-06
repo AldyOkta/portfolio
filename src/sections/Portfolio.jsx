@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-const categories = ["All", "Apps", "Branding", "UX/UI"];
+const categories = ["Semua", "Apps", "Branding", "UX/UI"];
 
 const workItems = [
     { id: 1, title: "Deloitte", category: "UX/UI", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" },
@@ -11,9 +11,9 @@ const workItems = [
 ];
 
 const Portfolio = () => {
-    const [activeCategory, setActiveCategory] = useState("All");
+    const [activeCategory, setActiveCategory] = useState("Semua");
 
-    const filteredItems = activeCategory === "All"
+    const filteredItems = activeCategory === "Semua"
         ? workItems
         : workItems.filter(item => item.category === activeCategory);
 
@@ -21,9 +21,9 @@ const Portfolio = () => {
         <section id="portfolio" className="py-24 px-8 bg-black/30">
             <div className="container mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Recent Works</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Eksplorasi Proyek & Kolaborasi</h2>
                     <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-                        We put your ideas and thus your wishes in the form of a unique web project that inspires you and you customers.
+                        Kumpulan proyek pengembangan aplikasi dan dokumentasi kolaborasi tim dalam memastikan standar kualitas perangkat lunak yang tinggi.
                     </p>
                 </div>
 
@@ -54,12 +54,18 @@ const Portfolio = () => {
                             key={project.id}
                             className="group relative overflow-hidden rounded-2xl cursor-pointer"
                         >
-                            <div className="bg-gray-800 h-[400px] w-full overflow-hidden">
+                            <div className="bg-[#0a0a1a] h-[400px] w-full overflow-hidden relative">
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1 brightness-90 contrast-110"
                                 />
+
+                                {/* Purple Filter Overlay with Blend Mode */}
+                                <div className="absolute inset-0 bg-purple-900/40 mix-blend-overlay transition-all duration-500 group-hover:bg-purple-900/10"></div>
+
+                                {/* Bottom Gradient for Text Readability */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-transparent to-transparent opacity-90"></div>
                             </div>
 
                             {/* Overlay */}

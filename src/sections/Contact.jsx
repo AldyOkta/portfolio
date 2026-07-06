@@ -87,8 +87,8 @@ const Contact = () => {
                     >
                         <FaCheckCircle className="text-2xl" />
                         <div>
-                            <h4 className="font-bold">Message Sent!</h4>
-                            <p className="text-sm text-green-100">Redirecting to your email client...</p>
+                            <h4 className="font-bold">Pesan Terkirim!</h4>
+                            <p className="text-sm text-green-100">Mengalihkan ke aplikasi email anda...</p>
                         </div>
                     </motion.div>
                 )}
@@ -98,8 +98,8 @@ const Contact = () => {
 
                 {/* Info */}
                 <div className="space-y-8">
-                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Let's work together!</h2>
-                    <p className="text-gray-400 max-w-md">I design and code beautifully simple things, and I love what I do. Just simple like that!</p>
+                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Mari Bangun Sistem yang Handal!</h2>
+                    <p className="text-gray-400 max-w-md">Saya membantu Anda memastikan integritas data, efisiensi workflow AI, dan kualitas aplikasi yang bebas dari bug. Mari berkolaborasi untuk menciptakan solusi digital yang teruji dan stabil.</p>
 
                     <div className="space-y-6">
                         <div className="flex items-center gap-4">
@@ -107,7 +107,7 @@ const Contact = () => {
                                 <FaPhone />
                             </div>
                             <div>
-                                <p className="text-gray-400 text-sm">Phone</p>
+                                <p className="text-gray-400 text-sm">Telepon</p>
                                 <p className="text-white font-bold">089601579321</p>
                             </div>
                         </div>
@@ -125,7 +125,7 @@ const Contact = () => {
                                 <FaMapMarkerAlt />
                             </div>
                             <div>
-                                <p className="text-gray-400 text-sm">Address</p>
+                                <p className="text-gray-400 text-sm">Alamat</p>
                                 <p className="text-white font-bold">Sukoharjo, Jawa Tengah</p>
                             </div>
                         </div>
@@ -137,24 +137,24 @@ const Contact = () => {
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-300">First Name</label>
+                                <label className="text-sm font-medium text-gray-300">Nama Depan</label>
                                 <input
                                     type="text"
                                     name="firstName"
                                     value={formData.firstName}
                                     onChange={handleChange}
-                                    placeholder="Your First Name"
+                                    placeholder="Nama Depan Anda"
                                     className="w-full p-4 bg-theme-dark rounded-lg border border-white/10 focus:border-theme-purple outline-none transition text-white"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-300">Last Name</label>
+                                <label className="text-sm font-medium text-gray-300">Nama Belakang</label>
                                 <input
                                     type="text"
                                     name="lastName"
                                     value={formData.lastName}
                                     onChange={handleChange}
-                                    placeholder="Your Last Name"
+                                    placeholder="Nama Belakang Anda"
                                     className="w-full p-4 bg-theme-dark rounded-lg border border-white/10 focus:border-theme-purple outline-none transition text-white"
                                 />
                             </div>
@@ -162,18 +162,18 @@ const Contact = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-300">Email address</label>
+                                <label className="text-sm font-medium text-gray-300">Alamat Email</label>
                                 <input
                                     type="email"
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    placeholder="you@example.com"
+                                    placeholder="anda@example.com"
                                     className="w-full p-4 bg-theme-dark rounded-lg border border-white/10 focus:border-theme-purple outline-none transition text-white"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-300">Phone number</label>
+                                <label className="text-sm font-medium text-gray-300">Nomor Telepon</label>
                                 <input
                                     type="tel"
                                     name="phone"
@@ -186,19 +186,19 @@ const Contact = () => {
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-gray-300">Message</label>
+                            <label className="text-sm font-medium text-gray-300">Pesan</label>
                             <textarea
                                 name="message"
                                 rows="4"
                                 value={formData.message}
                                 onChange={handleChange}
-                                placeholder="Type your message here..."
+                                placeholder="Tulis pesan anda disini..."
                                 className="w-full p-4 bg-theme-dark rounded-lg border border-white/10 focus:border-theme-purple outline-none transition text-white"
                             ></textarea>
                         </div>
 
                         <Button className="w-full py-4 text-base" disabled={isSubmitting}>
-                            {isSubmitting ? 'Sending...' : 'Send Message'}
+                            {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
                         </Button>
                     </form>
                 </div>

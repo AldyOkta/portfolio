@@ -1,35 +1,8 @@
 import { FaGraduationCap, FaBriefcase } from 'react-icons/fa';
+import { experience, education } from '../data/portfolioData';
 
 const Experience = () => {
-    const experiences = [
-        {
-            year: "2020 - Present",
-            title: "Framer Designer & Developer",
-            company: "Bluebase Designs",
-            description: "Defining the problem, identifying the scope and finally organising."
-        },
-        {
-            year: "2018 - 2020",
-            title: "Front-End Developer",
-            company: "Larsen & Toubro",
-            description: "Defining the problem, identifying the scope and finally organising."
-        }
-    ];
 
-    const education = [
-        {
-            year: "2020",
-            title: "Graphic Design Course",
-            institution: "University of Denmark",
-            description: "Defining the problem, identifying the scope and finally organising."
-        },
-        {
-            year: "2018",
-            title: "Web Design Course",
-            institution: "University of California",
-            description: "Defining the problem, identifying the scope and finally organising."
-        }
-    ];
 
     const Card = ({ item, icon: Icon }) => (
         <div className="group relative pl-8 pb-12 last:pb-0 border-l border-white/10 hover:border-theme-purple transition-colors duration-300">
@@ -41,9 +14,17 @@ const Experience = () => {
                     <span className="text-theme-purple font-bold text-sm tracking-wider">{item.year}</span>
                     <Icon className="text-2xl text-theme-purple" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-theme-purple transition-colors">{item.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-theme-purple transition-colors">{item.role}</h3>
                 <p className="text-gray-400 text-sm mb-4">{item.company || item.institution}</p>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
+                {Array.isArray(item.description) ? (
+                    <ul className="text-gray-500 text-sm leading-relaxed list-disc list-outside ml-4 space-y-2">
+                        {item.description.map((desc, i) => (
+                            <li key={i}>{desc}</li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
+                )}
             </div>
         </div>
     );
@@ -57,10 +38,10 @@ const Experience = () => {
                     <div>
                         <div className="flex items-center gap-4 mb-10">
                             <FaBriefcase className="text-theme-purple text-3xl" />
-                            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-text">My Experience</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-text">Pengalaman Saya</h2>
                         </div>
                         <div>
-                            {experiences.map((item, index) => <Card key={index} item={item} icon={FaBriefcase} />)}
+                            {experience.map((item, index) => <Card key={index} item={item} icon={FaBriefcase} />)}
                         </div>
                     </div>
 
@@ -68,7 +49,7 @@ const Experience = () => {
                     <div>
                         <div className="flex items-center gap-4 mb-10">
                             <FaGraduationCap className="text-theme-purple text-3xl" />
-                            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-text">My Education</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-text">Pendidikan Saya</h2>
                         </div>
                         <div>
                             {education.map((item, index) => <Card key={index} item={item} icon={FaGraduationCap} />)}
