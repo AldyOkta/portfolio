@@ -1,8 +1,8 @@
 import { profile } from '../data/portfolioData';
 import { motion } from 'framer-motion';
 import Button from '../components/Button';
-import AldyImg from '../assets/aldy.png';
-import CVFile from '../assets/CV_Aldy_Oktaviano.pdf';
+import AldyImg from '../assets/aldyokta.jpg';
+import CVFile from '../assets/CV - Aldy Oktaviano.pdf';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 const Hero = () => {
@@ -33,8 +33,8 @@ const Hero = () => {
                     className="space-y-8 order-2 lg:order-1"
                 >
                     <div>
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">{name}</h2>
-                        <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-text leading-tight">
+                        <h2 className="text-xl md:text-2xl font-semibold text-gray-300 mb-1">{name}</h2>
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-text leading-tight">
                             {role}
                         </h1>
                     </div>
@@ -83,7 +83,8 @@ const Hero = () => {
                             <img
                                 src={AldyImg}
                                 alt="Aldy"
-                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-110"
+                                className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-110"
+                                style={{ objectPosition: 'center 10%' }}
                             />
                         </div>
                     </motion.div>

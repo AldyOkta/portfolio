@@ -12,9 +12,6 @@ const Services = () => {
             <div className="container mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Solusi & Keahlian Teknis</h2>
-                    <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-                        Memastikan setiap baris kode dan fungsionalitas berjalan sempurna melalui pengujian yang ketat dan solusi pengembangan yang presisi
-                    </p>
                 </div>
 
                 <div className="flex flex-col gap-6">

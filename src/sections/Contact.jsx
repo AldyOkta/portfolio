@@ -3,8 +3,10 @@ import Button from '../components/Button';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaCheckCircle } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+import { profile } from '../data/portfolioData';
 
 const Contact = () => {
+    const { contact } = profile;
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -108,7 +110,7 @@ const Contact = () => {
                             </div>
                             <div>
                                 <p className="text-gray-400 text-sm">Telepon</p>
-                                <p className="text-white font-bold">089601579321</p>
+                                <p className="text-white font-bold">{contact.phone}</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
@@ -117,7 +119,7 @@ const Contact = () => {
                             </div>
                             <div>
                                 <p className="text-gray-400 text-sm">Email</p>
-                                <p className="text-white font-bold">oktavianoaldy777@gmail.com</p>
+                                <p className="text-white font-bold">{contact.email}</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
@@ -126,7 +128,7 @@ const Contact = () => {
                             </div>
                             <div>
                                 <p className="text-gray-400 text-sm">Alamat</p>
-                                <p className="text-white font-bold">Sukoharjo, Jawa Tengah</p>
+                                <p className="text-white font-bold">{contact.location}</p>
                             </div>
                         </div>
                     </div>

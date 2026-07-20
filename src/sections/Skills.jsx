@@ -1,6 +1,6 @@
 import { skills } from '../data/portfolioData';
-import { FaReact, FaGithub, FaRobot, FaFlask } from 'react-icons/fa';
-import { SiTailwindcss, SiFigma, SiVite, SiJavascript, SiSelenium, SiPostman, SiMysql } from 'react-icons/si';
+import { FaReact, FaGithub, FaRobot, FaFlask, FaMicrosoft, FaGoogle } from 'react-icons/fa';
+import { SiTailwindcss, SiFigma, SiVite, SiJavascript, SiSelenium, SiPostman, SiMysql, SiN8N } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 import { TbBrandReactNative, TbApi } from 'react-icons/tb';
 
@@ -23,6 +23,9 @@ const Skills = () => {
         "MySQL": { icon: <SiMysql />, color: "text-blue-600" },
         "Figma": { icon: <SiFigma />, color: "text-purple-400" },
         "VS Code": { icon: <VscVscode />, color: "text-blue-500" },
+        "n8n": { icon: <SiN8N />, color: "text-red-500" },
+        "Microsoft Office": { icon: <FaMicrosoft />, color: "text-orange-500" },
+        "Google Workspace": { icon: <FaGoogle />, color: "text-blue-400" },
     };
 
     const categories = [
