@@ -30,7 +30,6 @@ const Skills = () => {
 
     const categories = [
         { key: "development", title: "Development" },
-        { key: "qa_ai", title: "QA & AI" },
         { key: "tools", title: "Tools" }
     ];
 
