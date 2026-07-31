@@ -27,7 +27,7 @@ export const projects = [
         title: "Airbnb Clone",
         category: "Apps",
         description: "Aplikasi mobile pemesanan hotel berbasis React Native dengan fitur Pencarian, Bookmark, dan Profil Pengguna. Dilakukan deployment ke Netlify.",
-        image: "/portfolio/assets/project2.jpg",
+        images: ["/portfolio/assets/1.jpg"],
         link: "#"
     },
     {
