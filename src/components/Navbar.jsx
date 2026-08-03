@@ -50,14 +50,6 @@ const Navbar = () => {
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleNavClick('#hero')}
                 >
-                    <a href="#hero" className="text-white hover:text-purple-400 transition-colors">
-                        Portofolio
-                    </a>
-                    <motion.span
-                        className="w-2 h-2 rounded-full bg-purple-500"
-                        animate={{ scale: [1, 1.4, 1] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                    />
                 </motion.div>
 
                 {/* Desktop Menu */}
@@ -70,11 +62,10 @@ const Navbar = () => {
                                 <motion.a
                                     href={item.href}
                                     onClick={() => handleNavClick(item.href)}
-                                    className={`relative px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 block ${
-                                        isActive
-                                            ? 'text-white'
-                                            : 'text-gray-400 hover:text-white'
-                                    }`}
+                                    className={`relative px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 block ${isActive
+                                        ? 'text-white'
+                                        : 'text-gray-400 hover:text-white'
+                                        }`}
                                     whileHover={{ scale: 1.08 }}
                                     whileTap={{ scale: 0.92 }}
                                     animate={isClicked ? {
@@ -182,11 +173,10 @@ const Navbar = () => {
                                     <a
                                         href={item.href}
                                         onClick={() => handleNavClick(item.href)}
-                                        className={`block px-4 py-3 rounded-xl text-lg font-semibold transition-all duration-300 ${
-                                            activeLink === item.href
-                                                ? 'text-white bg-purple-600/20 border border-purple-500/30'
-                                                : 'text-gray-300 hover:text-white hover:bg-white/5'
-                                        }`}
+                                        className={`block px-4 py-3 rounded-xl text-lg font-semibold transition-all duration-300 ${activeLink === item.href
+                                            ? 'text-white bg-purple-600/20 border border-purple-500/30'
+                                            : 'text-gray-300 hover:text-white hover:bg-white/5'
+                                            }`}
                                     >
                                         {item.name}
                                     </a>

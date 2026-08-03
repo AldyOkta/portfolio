@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         'theme-dark': '#050709',
+        'theme-surface': '#0d0d14',
         'theme-purple': '#8750f7',
         'theme-gray': '#2a1454', // deep purple accent
         'link-hover': '#8750f7',

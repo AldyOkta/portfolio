@@ -24,7 +24,7 @@ const Portfolio = () => {
         : enrichedProjects.filter(item => item.category === activeCategory);
 
     return (
-        <section id="portfolio" className="py-24 px-8 bg-black/30">
+        <section id="portfolio" className="py-24 px-8 bg-theme-dark">
             <div className="container mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Eksplorasi Proyek</h2>

@@ -1,8 +1,8 @@
 import { profile } from '../data/portfolioData';
 import { motion } from 'framer-motion';
 import Button from '../components/Button';
-import AldyImg from '../assets/aldyokta.jpg';
-import CVFile from '../assets/CV - Aldy Oktaviano.pdf';
+const AldyImg = '/assets/aldyokta.jpg';
+const CVFile = '/assets/CV - ALDY OKTAVIANO.pdf';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 const Hero = () => {
@@ -21,7 +21,7 @@ const Hero = () => {
     };
 
     return (
-        <section id="hero" className="min-h-screen pt-32 pb-20 px-8 flex flex-col justify-center relative overflow-hidden">
+        <section id="hero" className="min-h-screen pt-32 pb-20 px-8 flex flex-col justify-center relative overflow-hidden bg-theme-dark">
 
             <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 

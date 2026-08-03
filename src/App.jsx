@@ -6,10 +6,12 @@ import Portfolio from './sections/Portfolio';
 import Experience from './sections/Experience';
 import Skills from './sections/Skills';
 import Contact from './sections/Contact';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen relative">
+            <ScrollToTop />
             <Navbar />
             <main>
                 <Hero />

@@ -76,14 +76,9 @@ export const experience = [
         company: "PT Tiga Serangkai Pustaka Mandiri",
         year: "Des 2025 - Sekarang",
         description: [
-            "Merancang dan membangun alur otomasi koreksi ejaan dan tanda baca konten buku pendidikan menggunakan n8n terintegrasi dengan LLM lokal.",
-            "Melakukan pengujian dan validasi linguistik terhadap output model AI untuk memastikan konsistensi, akurasi ejaan, dan ketepatan tanda baca sesuai kaidah Bahasa Indonesia.",
-            "Menjalankan pengujian regresi prompt secara berkala dan mengaudit hasil inferensi model guna meminimalisir halusinasi AI pada konten pendidikan.",
-            "Melakukan benchmarking performa model AI lokal (DeepSeek, Sailor2) termasuk monitoring penggunaan VRAM GPU NVIDIA.",
-            "Merancang dan mengelola lebih dari 10 test cases menggunakan OpenProject, mencakup pengujian fungsional, integrasi, dan validasi data.",
-            "Mengelola siklus hidup bug melalui OpenProject, melakukan pelaporan defect yang mendetail, serta menjalankan regression testing untuk memastikan stabilitas sistem.",
-            "Bekerja sama dengan tim pengembang untuk mengoptimalkan performa aplikasi desktop dalam menangani beban data inventori dan jadwal produksi yang kompleks.",
-            "Memberikan rekomendasi perbaikan dari sisi pengalaman pengguna (UX) agar aplikasi lebih mudah digunakan oleh operator mesin.",
+            "Merancang alur otomasi koreksi ejaan via n8n + LLM lokal.",
+            "Mengelola 10+ test cases & siklus hidup bug end-to-end via OpenProject.",
+            "Benchmarking model AI (DeepSeek, Sailor2) pada GPU NVIDIA.",
         ]
     },
     {
@@ -93,11 +88,7 @@ export const experience = [
         year: "Feb 2024 - Jul 2024",
         description: [
             "Mengembangkan aplikasi mobile sistem manajemen aset menggunakan React Native dan Expo.",
-            "Mengimplementasikan desain mobile sesuai arahan tim UI/UX.",
-            "Melakukan pengujian unit dan integrasi untuk memastikan antarmuka pengguna mobile berfungsi dengan baik.",
-            "Mengoptimalkan performa antarmuka pengguna mobile untuk memastikan kelancaran dan kecepatan loading.",
-            "Mengimplementasikan antarmuka pengguna dengan HTML, CSS, JavaScript, React Native, dan Expo.",
-            "Membuat koneksi dengan Database.",
+            "Melakukan pengujian unit dan integrasi untuk kelancaran antarmuka pengguna.",
         ]
     },
     {
@@ -106,10 +97,8 @@ export const experience = [
         company: "Hacktiv8 Academy - Batch 5",
         year: "Agu 2023 - Jan 2024",
         description: [
-            "Program Magang Studi Independen Bersertifikat (MSIB) Kemendikbudristek yang dilakukan secara remote.",
-            "Membangun aplikasi mobile pemesanan hotel berbasis React Native secara tim, mencakup fitur home, pencarian, bookmark, dan manajemen profil pengguna.",
+            "Membangun aplikasi mobile pemesanan hotel berbasis React Native secara tim.",
             "Melakukan deployment aplikasi ke platform Netlify.",
-            "Menyusun dokumentasi dan laporan proyek secara terstruktur sebagai bagian dari tanggung jawab tim.",
         ]
     },
     {
@@ -118,11 +107,8 @@ export const experience = [
         company: "KPU - Pemilihan Bupati & Gubernur",
         year: "27 Nov 2024",
         description: [
-            "Bertugas sebagai operator SIREKAP (Sistem Informasi Rekapitulasi) dalam proses rekapitulasi suara di TPS.",
-            "Melakukan input dan unggah data hasil penghitungan suara ke aplikasi SIREKAP secara tepat, cepat, dan akurat.",
-            "Memastikan hasil foto formulir C1 Plano dapat terbaca dengan jelas sebelum dikirim melalui aplikasi.",
-            "Mengkoordinasikan validasi data dengan Ketua KPPS serta anggota lainnya untuk menjamin keakuratan hasil rekapitulasi.",
-            "Menangani kendala teknis terkait aplikasi maupun jaringan internet di lapangan dengan sigap.",
+            "Melakukan input dan unggah data hasil penghitungan suara ke aplikasi SIREKAP.",
+            "Mengkoordinasikan validasi data dengan tim KPPS untuk menjamin keakuratan hasil.",
         ]
     }
 ];

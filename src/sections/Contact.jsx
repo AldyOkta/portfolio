@@ -77,7 +77,7 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-24 px-8 bg-theme-dark relative overflow-hidden">
+        <section id="contact" className="py-24 px-8 bg-theme-surface relative overflow-hidden">
             {/* Toast Notification */}
             <AnimatePresence>
                 {isSent && (
@@ -100,7 +100,7 @@ const Contact = () => {
 
                 {/* Info */}
                 <div className="space-y-8">
-                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Mari Bangun Sistem yang Handal!</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Kualitas Bukan Kebetulan itu Proses!</h2>
                     <p className="text-gray-400 max-w-md">Saya membantu Anda memastikan integritas data, efisiensi workflow AI, dan kualitas aplikasi yang bebas dari bug. Mari berkolaborasi untuk menciptakan solusi digital yang teruji dan stabil.</p>
 
                     <div className="space-y-6">
