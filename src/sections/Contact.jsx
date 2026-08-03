@@ -199,7 +199,7 @@ const Contact = () => {
                             ></textarea>
                         </div>
 
-                        <Button className="w-full py-4 text-base" disabled={isSubmitting}>
+                        <Button type="submit" className="w-full py-4 text-base" disabled={isSubmitting}>
                             {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
                         </Button>
                     </form>
