@@ -27,7 +27,7 @@ export const projects = [
         title: "Airbnb Clone",
         category: "Apps",
         description: "Aplikasi mobile pemesanan hotel berbasis React Native dengan fitur Pencarian, Bookmark, dan Profil Pengguna. Dilakukan deployment ke Netlify.",
-        images: ["/portfolio/assets/1.jpg"],
+        images: ["/assets/1.jpg"],
         link: "#"
     },
     {
@@ -36,11 +36,11 @@ export const projects = [
         category: "Web",
         description: "Proyek pelatihan BPVP Surakarta × Edutic Academy (200 jam). Membangun Smart Nutrition System berbasis IoT untuk mengotomasi pencampuran nutrisi tanaman hidroponik secara presisi. Menggunakan sensor pH, TDS, dan suhu yang terintegrasi dengan mikrokontroler untuk monitoring real-time dan kontrol otomatis pompa nutrisi.",
         images: [
-            "/portfolio/assets/1.jpg",
-            "/portfolio/assets/2.jpg",
-            "/portfolio/assets/3.jpg",
-            "/portfolio/assets/4.jpg",
-            "/portfolio/assets/5.jpg",
+            "/assets/1.jpg",
+            "/assets/2.jpg",
+            "/assets/3.jpg",
+            "/assets/4.jpg",
+            "/assets/5.jpg",
         ],
         link: "#"
     }
