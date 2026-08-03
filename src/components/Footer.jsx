@@ -1,7 +1,11 @@
 const Footer = () => {
     return (
-        <footer className="py-6 text-center text-gray-400 bg-black">
-            <p>&copy; {new Date().getFullYear()} Aldy Oktaviano. Seluruh hak cipta dilindungi.</p>
+        <footer className="border-t border-white/[0.07] bg-[#07070c] px-6 py-8 sm:px-8">
+            <div className="container mx-auto text-center">
+                <p className="text-sm text-gray-500">
+                    Copyright {new Date().getFullYear()} <span className="font-semibold text-gray-300">Aldy Oktaviano</span>.
+                </p>
+            </div>
         </footer>
     );
 };

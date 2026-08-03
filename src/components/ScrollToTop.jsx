@@ -1,72 +1,49 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { FaArrowUp } from 'react-icons/fa';
 
 const ScrollToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
 
-    const toggleVisibility = () => {
-        if (window.scrollY > 300) {
-            setIsVisible(true);
-        } else {
-            setIsVisible(false);
-        }
-    };
-
-    const calculateScrollProgress = () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        setScrollProgress(scrollPercent);
-    };
-
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    };
-
     useEffect(() => {
-        window.addEventListener("scroll", () => {
-            toggleVisibility();
-            calculateScrollProgress();
-        });
+        const updateScrollState = () => {
+            const maxScroll = Math.max(
+                document.documentElement.scrollHeight - window.innerHeight,
+                1
+            );
 
-        return () => {
-            window.removeEventListener("scroll", () => {
-                toggleVisibility();
-                calculateScrollProgress();
-            });
+            setIsVisible(window.scrollY > 420);
+            setScrollProgress((window.scrollY / maxScroll) * 100);
         };
+
+        updateScrollState();
+        window.addEventListener('scroll', updateScrollState, { passive: true });
+        return () => window.removeEventListener('scroll', updateScrollState);
     }, []);
 
     return (
         <>
-            {/* Scroll Progress Bar */}
-            <div className="fixed top-0 right-0 w-1 h-screen z-50 pointer-events-none">
-                <div 
-                    className="w-full bg-theme-purple rounded-b-md shadow-neon transition-all duration-100 ease-out"
-                    style={{ height: `${scrollProgress}%` }}
-                ></div>
+            <div className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-px bg-white/[0.05]">
+                <div
+                    className="h-full bg-gradient-to-r from-theme-purple via-violet-400 to-cyan-300 shadow-[0_0_12px_rgba(135,80,247,0.9)] transition-[width] duration-100"
+                    style={{ width: scrollProgress + '%' }}
+                />
             </div>
 
-            {/* Back to Top Button */}
             <AnimatePresence>
                 {isVisible && (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.5, y: 50 }}
+                    <motion.button
+                        type="button"
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        aria-label="Kembali ke atas"
+                        initial={{ opacity: 0, scale: 0.7, y: 16 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.5, y: 50 }}
-                        transition={{ duration: 0.3 }}
-                        onClick={scrollToTop}
-                        className="fixed bottom-8 right-8 z-50 cursor-pointer group"
+                        exit={{ opacity: 0, scale: 0.7, y: 16 }}
+                        className="group fixed bottom-6 right-6 z-50 grid h-12 w-12 place-items-center rounded-full border border-theme-purple/60 bg-[#0e0b1c]/85 text-theme-purple shadow-[0_0_24px_rgba(135,80,247,0.25)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:bg-theme-purple hover:text-white sm:bottom-8 sm:right-8"
                     >
-                        <div className="w-12 h-12 bg-theme-purple/20 backdrop-blur-sm border border-theme-purple rounded-full flex items-center justify-center text-theme-purple hover:bg-theme-purple hover:text-white transition-all duration-300 shadow-neon hover:shadow-[0_0_20px_rgba(135,80,247,0.8)]">
-                            <FaArrowUp className="text-xl transform group-hover:-translate-y-1 transition-transform duration-300" />
-                        </div>
-                    </motion.div>
+                        <FaArrowUp className="transition-transform duration-300 group-hover:-translate-y-0.5" />
+                    </motion.button>
                 )}
             </AnimatePresence>
         </>
