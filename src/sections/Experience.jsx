@@ -6,13 +6,16 @@ const Experience = () => {
 
     const Card = ({ item, icon: Icon, delay = 0, isFirst = false, color = "theme-purple", link = null }) => {
         // Map color to tailwind classes explicitly since tailwind doesn't support dynamic string interpolation for custom colors out of the box unless configured in safelist.
-        // But since we use standard tailwind colors like teal-400, orange-400, blue-400, we can define the classes here.
+        // But since we use standard tailwind colors like teal-400, orange-400, cyan-400, we can define the classes here.
+        // NOTE: "connectorFrom" disimpan terpisah dari "bg" karena class `from-*` Tailwind tidak bisa dibentuk
+        // dengan cara menempel prefix ke class `bg-*` (mis. `from-${bg}` -> "from-bg-theme-purple" itu class palsu).
         const colorClasses = {
             "purple": {
                 text: "text-theme-purple",
                 textLight: "text-theme-purple/60",
                 bg: "bg-theme-purple",
-                shadow: "group-hover:shadow-[0_0_10px_#8750f7]",
+                connectorFrom: "from-theme-purple",
+                shadow: "group-hover:shadow-[0_0_10px_#3B82F6]",
                 borderHover: "hover:border-theme-purple",
                 groupHoverText: "group-hover:text-theme-purple"
             },
@@ -20,6 +23,7 @@ const Experience = () => {
                 text: "text-teal-400",
                 textLight: "text-teal-400/60",
                 bg: "bg-teal-400",
+                connectorFrom: "from-teal-400",
                 shadow: "group-hover:shadow-[0_0_10px_#2dd4bf]",
                 borderHover: "hover:border-teal-400",
                 groupHoverText: "group-hover:text-teal-400"
@@ -28,17 +32,19 @@ const Experience = () => {
                 text: "text-orange-400",
                 textLight: "text-orange-400/60",
                 bg: "bg-orange-400",
+                connectorFrom: "from-orange-400",
                 shadow: "group-hover:shadow-[0_0_10px_#fb923c]",
                 borderHover: "hover:border-orange-400",
                 groupHoverText: "group-hover:text-orange-400"
             },
-            "blue": {
-                text: "text-blue-400",
-                textLight: "text-blue-400/60",
-                bg: "bg-blue-400",
-                shadow: "group-hover:shadow-[0_0_10px_#60a5fa]",
-                borderHover: "hover:border-blue-400",
-                groupHoverText: "group-hover:text-blue-400"
+            "cyan": {
+                text: "text-cyan-400",
+                textLight: "text-cyan-400/60",
+                bg: "bg-cyan-400",
+                connectorFrom: "from-cyan-400",
+                shadow: "group-hover:shadow-[0_0_10px_#22d3ee]",
+                borderHover: "hover:border-cyan-400",
+                groupHoverText: "group-hover:text-cyan-400"
             }
         }[color] || colorClasses["purple"];
 
@@ -52,9 +58,9 @@ const Experience = () => {
             >
                 {/* Dot */}
                 <div className={`absolute -left-[7px] top-1 w-[12px] h-[12px] rounded-full ${colorClasses.bg} ${colorClasses.shadow} transition-all duration-300`}></div>
-                
+
                 {/* Connector Line glow effect */}
-                <div className={`absolute -left-[2px] top-1 bottom-0 w-[2px] bg-gradient-to-b from-${colorClasses.bg} to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300`}></div>
+                <div className={`absolute -left-[2px] top-1 bottom-0 w-[2px] bg-gradient-to-b ${colorClasses.connectorFrom} to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-300`}></div>
 
                 {isFirst && (
                     <div className={`absolute -left-12 -top-6 text-[9px] font-bold px-2 py-0.5 rounded border border-white/20 ${colorClasses.text} bg-white/5`}>
@@ -69,7 +75,7 @@ const Experience = () => {
                     </div>
                     <h3 className={`text-base font-bold text-white mb-0.5 ${colorClasses.groupHoverText} transition-colors leading-snug`}>{item.role}</h3>
                     <p className="text-gray-300 text-xs mb-3">{item.company || item.institution}</p>
-                    
+
                     {Array.isArray(item.description) ? (
                         <ul className="text-gray-300 text-sm leading-relaxed list-disc list-outside ml-4 space-y-1.5">
                             {item.description.map((desc, i) => (
@@ -99,7 +105,7 @@ const Experience = () => {
             "purple": { bg: "bg-theme-purple/20", border: "border-theme-purple/30", text: "text-theme-purple" },
             "teal": { bg: "bg-teal-400/20", border: "border-teal-400/30", text: "text-teal-400" },
             "orange": { bg: "bg-orange-400/20", border: "border-orange-400/30", text: "text-orange-400" },
-            "blue": { bg: "bg-blue-400/20", border: "border-blue-400/30", text: "text-blue-400" }
+            "cyan": { bg: "bg-cyan-400/20", border: "border-cyan-400/30", text: "text-cyan-400" }
         }[color] || colorClasses["purple"];
 
         return (
@@ -134,11 +140,11 @@ const Experience = () => {
                         <SectionHeading icon={FaBriefcase} title="Pengalaman Kerja" color="purple" />
                         <div className="mt-8">
                             {experience.map((item, index) => (
-                                <Card 
-                                    key={index} 
-                                    item={item} 
-                                    icon={FaBriefcase} 
-                                    delay={index * 0.1} 
+                                <Card
+                                    key={index}
+                                    item={item}
+                                    icon={FaBriefcase}
+                                    delay={index * 0.1}
                                     isFirst={index === 0}
                                     color="purple"
                                     link={index === 0 ? "/assets/CV - ALDY OKTAVIANO.pdf" : null}
@@ -152,27 +158,27 @@ const Experience = () => {
 
                         {/* Pendidikan */}
                         <div>
-                            <SectionHeading icon={FaGraduationCap} title="Pendidikan" color="teal" />
+                            <SectionHeading icon={FaGraduationCap} title="Pendidikan" color="purple" />
                             <div className="mt-8">
                                 {education.map((item, index) => (
-                                    <Card key={index} item={item} icon={FaGraduationCap} delay={0.1} color="teal" />
+                                    <Card key={index} item={item} icon={FaGraduationCap} delay={0.1} color="purple" />
                                 ))}
                             </div>
                         </div>
 
                         {/* Organisasi */}
                         <div>
-                            <SectionHeading icon={FaUsers} title="Organisasi" color="orange" />
+                            <SectionHeading icon={FaUsers} title="Organisasi" color="purple" />
                             <div className="mt-8">
                                 {organization.map((item, index) => (
-                                    <Card key={index} item={item} icon={FaUsers} delay={0.1 + index * 0.1} color="orange" />
+                                    <Card key={index} item={item} icon={FaUsers} delay={0.1 + index * 0.1} color="purple" />
                                 ))}
                             </div>
                         </div>
 
                         {/* Pelatihan */}
                         <div>
-                            <SectionHeading icon={FaLaptopCode} title="Pelatihan" color="blue" />
+                            <SectionHeading icon={FaLaptopCode} title="Pelatihan" color="purple" />
                             <div className="mt-8">
                                 {training.map((item, index) => (
                                     <Card
@@ -185,7 +191,7 @@ const Experience = () => {
                                         }}
                                         icon={FaLaptopCode}
                                         delay={0.1 + index * 0.1}
-                                        color="blue"
+                                        color="purple"
                                     />
                                 ))}
                             </div>

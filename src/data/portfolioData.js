@@ -1,4 +1,3 @@
-
 export const profile = {
     name: "Aldy Oktaviano",
     role: "QA Tester & Mobile Developer",
@@ -24,16 +23,40 @@ export const profile = {
 export const projects = [
     {
         id: 1,
-        title: "Airbnb Clone",
-        category: "Apps",
-        description: "Aplikasi mobile pemesanan hotel berbasis React Native dengan fitur Pencarian, Bookmark, dan Profil Pengguna. Dilakukan deployment ke Netlify.",
-        images: ["/assets/1.jpg"],
+        title: "Magang Studi Independen Bersertifikat di Hacktiv8 Academy 2023 Batch 5",
+        category: "Sertifikat",
+        posisi: "Android React & React Native Front End Developer",
+        period: "Agustus 2023 - Januari 2024",
+        description: "Program MSIB Kemendikbudristek ini dilakukan secara remote.",
+        jobdesk: [
+            "Membangun aplikasi mobile pemesanan hotel berbasis React Native secara tim, mencakup fitur home, pencarian, bookmark, dan manajemen profil pengguna.",
+            "Melakukan deployment aplikasi ke platform Netlify.",
+            "Menyusun dokumentasi dan laporan proyek secara terstruktur sebagai bagian dari tanggung jawab tim.",
+        ],
+        images: ["/assets/MSIB.jpg"],
         link: "#"
     },
     {
         id: 2,
+        title: "Magang Mandiri di PT Tiga Serangkai Pustaka Mandiri",
+        category: "Sertifikat",
+        posisi: "Mobile Developer",
+        period: "Februari 2023 - Juli 2024",
+        jobdesk: [
+            "Mengembangkan aplikasi mobile sistem manajemen aset menggunakan React Native dan Expo",
+            "Menampilkan desain mobile sesuai apa yang dibuat tim UI/UX ",
+            "Melakukan pengujian unit dan integrasi untuk memastikan antarmuka pengguna mobile berfungsi dengan baik.",
+            "Mengoptimalkan performa antarmuka pengguna mobile untuk memastikan kelancaran dan kecepatan loading.",
+            "Mengimplementasikan antarmuka pengguna mobile dengan menggunakan HTML, CSS, JavaScript, dan framework mobile menggunakan React Native dan Expo.",
+            "Membuat koneksi dengan Database."
+        ],
+        images: ["/assets/Magang-Mandiri.jpg"],
+        link: "#"
+    },
+    {
+        id: 3,
         title: "Hydroponic Automation System",
-        category: "Web",
+        category: "Project",
         description: "Proyek pelatihan BPVP Surakarta × Edutic Academy (200 jam). Membangun Smart Nutrition System berbasis IoT untuk mengotomasi pencampuran nutrisi tanaman hidroponik secara presisi. Menggunakan sensor pH, TDS, dan suhu yang terintegrasi dengan mikrokontroler untuk monitoring real-time dan kontrol otomatis pompa nutrisi.",
         images: [
             "/assets/1.jpg",
@@ -49,7 +72,7 @@ export const projects = [
 export const services = [
     {
         id: "01",
-        title: "Pengujian Kualitas (QA)",
+        title: "Manual Testing (QA)",
         description: "Merancang dan mengelola lebih dari 10 test cases, mengelola siklus hidup bug end-to-end via OpenProject, serta menjalankan regression testing untuk memastikan stabilitas sistem."
     },
     {

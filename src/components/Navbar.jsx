@@ -45,9 +45,6 @@ const Navbar = () => {
           className="group inline-flex items-center gap-3"
           aria-label="Kembali ke beranda"
         >
-          <span className="text-lg font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-theme-purple to-violet-400 select-none">
-            AO
-          </span>
         </a>
 
         <ul className="hidden items-center gap-1 md:flex">
