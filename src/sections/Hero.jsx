@@ -33,13 +33,13 @@ const Hero = () => {
                     className="space-y-8 order-2 lg:order-1"
                 >
                     <div>
-                        <h2 className="text-xl md:text-2xl font-semibold text-gray-300 mb-1">{name}</h2>
+                        <h2 className="text-xl md:text-2xl font-semibold text-gray-200 mb-1">{name}</h2>
                         <h1 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-text leading-tight">
                             {role}
                         </h1>
                     </div>
 
-                    <p className="text-gray-400 text-lg max-w-lg leading-relaxed">
+                    <p className="text-gray-200 text-lg max-w-lg leading-relaxed">
                         {tagline}
                     </p>
 

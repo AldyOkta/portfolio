@@ -25,7 +25,7 @@ const Services = () => {
                                 {service.title}
                             </h3>
 
-                            <p className="text-sm leading-7 text-gray-400 transition-colors duration-300 group-hover:text-gray-300">
+                            <p className="text-sm leading-7 text-gray-300 transition-colors duration-300 group-hover:text-gray-200">
                                 {service.description}
                             </p>
                         </motion.article>

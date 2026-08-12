@@ -101,7 +101,7 @@ const Contact = () => {
                 {/* Info */}
                 <div className="space-y-8">
                     <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Kualitas Bukan Kebetulan itu Proses!</h2>
-                    <p className="text-gray-400 max-w-md">Saya membantu Anda memastikan integritas data, efisiensi workflow AI, dan kualitas aplikasi yang bebas dari bug. Mari berkolaborasi untuk menciptakan solusi digital yang teruji dan stabil.</p>
+                    <p className="text-gray-300 max-w-md">Saya membantu Anda memastikan integritas data, efisiensi workflow AI, dan kualitas aplikasi yang bebas dari bug. Mari berkolaborasi untuk menciptakan solusi digital yang teruji dan stabil.</p>
 
                     <div className="space-y-6">
                         <div className="flex items-center gap-4">
@@ -109,7 +109,7 @@ const Contact = () => {
                                 <FaPhone />
                             </div>
                             <div>
-                                <p className="text-gray-400 text-sm">Telepon</p>
+                                <p className="text-gray-300 text-sm">Telepon</p>
                                 <p className="text-white font-bold">{contact.phone}</p>
                             </div>
                         </div>
@@ -118,7 +118,7 @@ const Contact = () => {
                                 <FaEnvelope />
                             </div>
                             <div>
-                                <p className="text-gray-400 text-sm">Email</p>
+                                <p className="text-gray-300 text-sm">Email</p>
                                 <p className="text-white font-bold">{contact.email}</p>
                             </div>
                         </div>
@@ -127,7 +127,7 @@ const Contact = () => {
                                 <FaMapMarkerAlt />
                             </div>
                             <div>
-                                <p className="text-gray-400 text-sm">Alamat</p>
+                                <p className="text-gray-300 text-sm">Alamat</p>
                                 <p className="text-white font-bold">{contact.location}</p>
                             </div>
                         </div>

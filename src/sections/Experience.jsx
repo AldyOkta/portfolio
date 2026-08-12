@@ -68,7 +68,7 @@ const Experience = () => {
                         <Icon className={`text-xl ${colorClasses.textLight}`} />
                     </div>
                     <h3 className={`text-base font-bold text-white mb-0.5 ${colorClasses.groupHoverText} transition-colors leading-snug`}>{item.role}</h3>
-                    <p className="text-gray-400 text-xs mb-3">{item.company || item.institution}</p>
+                    <p className="text-gray-300 text-xs mb-3">{item.company || item.institution}</p>
                     
                     {Array.isArray(item.description) ? (
                         <ul className="text-gray-300 text-sm leading-relaxed list-disc list-outside ml-4 space-y-1.5">
@@ -81,8 +81,12 @@ const Experience = () => {
                     )}
 
                     {link && (
-                        <a href={link} className={`inline-block mt-4 text-xs font-medium ${colorClasses.text} hover:underline`}>
-                            Lihat detail di CV →
+                        <a
+                            href={link}
+                            aria-label={`Lihat CV lengkap Aldy Oktaviano (buka file PDF)`}
+                            className={`inline-block mt-4 text-xs font-medium ${colorClasses.text} hover:underline`}
+                        >
+                            Lihat CV Lengkap →
                         </a>
                     )}
                 </div>
@@ -120,7 +124,7 @@ const Experience = () => {
                     className="text-center mb-16"
                 >
                     <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-text mb-3">Perjalanan Saya</h2>
-                    <p className="text-gray-400 max-w-xl mx-auto text-sm">Rekam jejak pengalaman, pendidikan, organisasi, dan pelatihan yang membentuk saya.</p>
+                    <p className="text-gray-300 max-w-xl mx-auto text-sm">Rekam jejak pengalaman, pendidikan, organisasi, dan pelatihan yang membentuk saya.</p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">

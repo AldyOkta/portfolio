@@ -28,7 +28,7 @@ const Portfolio = () => {
             <div className="container mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Eksplorasi Proyek</h2>
-                    <p className="text-gray-400 mt-3 max-w-xl mx-auto text-sm">
+                    <p className="text-gray-300 mt-3 max-w-xl mx-auto text-sm">
                         Kumpulan proyek pengembangan aplikasi dan dokumentasi kolaborasi tim dalam memastikan standar kualitas perangkat lunak yang tinggi.
                     </p>
                 </div>
@@ -83,7 +83,7 @@ const Portfolio = () => {
                                     <h3 className="text-base font-bold text-white mb-2 group-hover:text-theme-purple transition-colors">
                                         {project.title}
                                     </h3>
-                                    <p className="text-gray-500 text-xs leading-relaxed mb-3">
+                                    <p className="text-gray-300 text-xs leading-relaxed mb-3">
                                         {project.description}
                                     </p>
                                     {project.tech && (
