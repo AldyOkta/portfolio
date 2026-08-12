@@ -35,28 +35,38 @@ const Skills = () => {
 
     return (
         <section id="skills" aria-labelledby="skills-heading" className="py-24 px-8 bg-theme-dark">
-            <div className="container mx-auto">
-                <h2 id="skills-heading" className="text-4xl font-bold mb-16 text-center text-transparent bg-clip-text bg-gradient-text">Skills</h2>
+            <div className="container mx-auto max-w-5xl">
+                <h2 id="skills-heading" className="text-4xl font-bold mb-16 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">
+                    Skills
+                </h2>
 
-                <div className="space-y-16">
+                <div className="space-y-14">
                     {categories.map((category) => (
                         <div key={category.key}>
-                            <h3 className="text-2xl font-bold text-white mb-8 border-l-4 border-theme-purple pl-4">{category.title}</h3>
+                            <h3 className="text-xs font-semibold tracking-[0.3em] uppercase text-white-600 mb-6 pb-3 border-b border-white/10">
+                                {category.title}
+                            </h3>
+
                             <ul
                                 aria-label={`Daftar skill ${category.title}`}
-                                className="flex flex-wrap gap-6 list-none p-0 m-0"
+                                className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 list-none p-0 m-0"
                             >
                                 {skills[category.key]?.map((skill, index) => {
                                     const skillData = skillIcons[skill] || { icon: <FaRobot />, color: "text-gray-400" };
                                     return (
-                                        <li key={index} className="group flex flex-col items-center gap-4 p-6 bg-white/5 rounded-2xl hover:bg-theme-purple/20 transition-all duration-300 border border-white/10 hover:border-theme-purple hover:-translate-y-2 min-w-[120px]">
+                                        <li
+                                            key={index}
+                                            className="group flex flex-col items-center justify-center gap-3 aspect-square p-4 bg-white/5 rounded-xl border border-white/10 transition-all duration-300 hover:bg-theme-purple/15 hover:border-theme-purple/60 hover:-translate-y-1"
+                                        >
                                             <div
                                                 aria-hidden="true"
-                                                className={`text-5xl ${skillData.color} drop-shadow-lg transition-transform duration-500 group-hover:scale-110`}
+                                                className={`flex items-center justify-center text-4xl ${skillData.color} transition-transform duration-300 group-hover:scale-110`}
                                             >
                                                 {skillData.icon}
                                             </div>
-                                            <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">{skill}</span>
+                                            <span className="text-xs font-medium text-gray-300 text-center leading-tight group-hover:text-white transition-colors">
+                                                {skill}
+                                            </span>
                                         </li>
                                     );
                                 })}
@@ -70,4 +80,3 @@ const Skills = () => {
 };
 
 export default Skills;
-

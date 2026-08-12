@@ -1,9 +1,56 @@
 import { useRef, useState } from 'react';
 import Button from '../components/Button';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaCheckCircle } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaRocket, FaCheckCircle } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { profile } from '../data/portfolioData';
+
+// Roket: persiapan (getar) -> meluncur sambil berputar -> menghilang di atas
+const RocketLaunchOverlay = ({ origin }) => {
+    const travelDistance = origin.y + 260;
+
+    return (
+        <motion.div
+            className="fixed z-[70] pointer-events-none"
+            style={{ left: origin.x, top: origin.y }}
+            initial={{ y: 0, x: '-50%', rotate: -45, scale: 1, opacity: 1 }}
+            animate={{
+                // Fase 1 (0 - 25%): persiapan, getar di tempat, belum naik
+                // Fase 2 (25% - 85%): meluncur ke atas sambil berputar-putar (2x putaran penuh)
+                // Fase 3 (85% - 100%): memudar menghilang di ketinggian
+                y: [0, 0, -2, 2, -3, 0, -40, -140, -travelDistance],
+                x: ['-50%', '-52%', '-48%', '-51%', '-49%', '-50%', '-46%', '-54%', '-50%'],
+                rotate: [-45, -48, -42, -50, -40, -45, 60, 420, 750],
+                scale: [1, 1.05, 0.98, 1.05, 0.98, 1, 1, 1, 1],
+                opacity: [1, 1, 1, 1, 1, 1, 1, 1, 0],
+            }}
+            transition={{
+                duration: 2,
+                times: [0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.45, 0.75, 1],
+                ease: 'easeInOut',
+            }}
+        >
+            <div className="relative flex flex-col items-center">
+                {/* Jejak api, makin panjang & intens begitu masuk fase meluncur */}
+                <motion.div
+                    className="absolute top-[85%] left-1/2 -translate-x-1/2 w-2 rounded-full bg-gradient-to-b from-orange-400 via-amber-500/70 to-transparent"
+                    initial={{ height: 4, opacity: 0.5 }}
+                    animate={{ height: [4, 6, 8, 6, 10, 8, 50, 110, 140], opacity: [0.5, 0.6, 0.5, 0.6, 0.5, 0.7, 0.9, 0.7, 0] }}
+                    transition={{ duration: 2, times: [0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.45, 0.75, 1] }}
+                />
+                {/* Glow biru berdenyut di sekitar roket selama fase persiapan & meluncur */}
+                <motion.div
+                    className="absolute w-10 h-10 rounded-full bg-blue-400/40 blur-md"
+                    animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0.9, 0.6] }}
+                    transition={{ duration: 0.35, repeat: Infinity }}
+                />
+                <div className="relative text-3xl text-white drop-shadow-[0_0_12px_rgba(59,130,246,0.9)]">
+                    <FaRocket />
+                </div>
+            </div>
+        </motion.div>
+    );
+};
 
 const Contact = () => {
     const { contact } = profile;
@@ -15,8 +62,10 @@ const Contact = () => {
         message: ''
     });
     const [isSent, setIsSent] = useState(false);
+    const [launchOrigin, setLaunchOrigin] = useState(null);
 
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const buttonWrapperRef = useRef(null);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -53,6 +102,13 @@ const Contact = () => {
         emailjs.send(serviceID, templateID, templateParams, publicKey)
             .then((response) => {
                 console.log('SUCCESS!', response.status, response.text);
+
+                // Ambil posisi tombol saat ini untuk titik awal roket
+                if (buttonWrapperRef.current) {
+                    const rect = buttonWrapperRef.current.getBoundingClientRect();
+                    setLaunchOrigin({ x: rect.left + rect.width / 2, y: rect.top });
+                }
+
                 setIsSent(true);
                 setFormData({
                     firstName: '',
@@ -62,10 +118,11 @@ const Contact = () => {
                     message: ''
                 });
 
-                // Reset notification after 3 seconds
+                // Toast + roket hilang setelah animasi (2s) + jeda baca (1.5s)
                 setTimeout(() => {
                     setIsSent(false);
-                }, 3000);
+                    setLaunchOrigin(null);
+                }, 3500);
             })
             .catch((err) => {
                 console.error('FAILED...', err);
@@ -78,16 +135,24 @@ const Contact = () => {
 
     return (
         <section id="contact" aria-labelledby="contact-heading" className="py-24 px-8 bg-theme-surface relative overflow-hidden">
-            {/* Toast Notification */}
+            {/* Roket: persiapan -> meluncur berputar -> menghilang */}
+            <AnimatePresence>
+                {isSent && launchOrigin && (
+                    <RocketLaunchOverlay origin={launchOrigin} />
+                )}
+            </AnimatePresence>
+
+            {/* Toast Notification (muncul setelah jeda, seiring roket lepas landas) */}
             <AnimatePresence>
                 {isSent && (
                     <motion.div
                         role="status"
                         aria-live="polite"
                         aria-atomic="true"
-                        initial={{ opacity: 0, y: -50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -50 }}
+                        initial={{ opacity: 0, y: -50, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -50, scale: 0.9 }}
+                        transition={{ delay: 0.3 }}
                         className="fixed top-24 right-8 bg-green-500 text-white px-6 py-4 rounded-xl shadow-2xl z-50 flex items-center gap-3"
                     >
                         <FaCheckCircle className="text-2xl" aria-hidden="true" />
@@ -103,7 +168,9 @@ const Contact = () => {
 
                 {/* Info */}
                 <div className="space-y-8">
-                    <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Kualitas Bukan Kebetulan itu Proses!</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400">
+                        Kualitas Bukan Kebetulan itu Proses!
+                    </h2>
                     <p className="text-gray-300 max-w-md">Saya membantu Anda memastikan integritas data, efisiensi workflow AI, dan kualitas aplikasi yang bebas dari bug. Mari berkolaborasi untuk menciptakan solusi digital yang teruji dan stabil.</p>
 
                     <div className="space-y-6">
@@ -210,9 +277,11 @@ const Contact = () => {
                             ></textarea>
                         </div>
 
-                        <Button type="submit" className="w-full py-4 text-base" disabled={isSubmitting}>
-                            {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
-                        </Button>
+                        <div ref={buttonWrapperRef}>
+                            <Button type="submit" className="w-full py-4 text-base" disabled={isSubmitting}>
+                                {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
+                            </Button>
+                        </div>
                     </form>
                 </div>
             </div>

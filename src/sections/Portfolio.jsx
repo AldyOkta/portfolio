@@ -64,7 +64,7 @@ const Portfolio = () => {
                                 className="group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
                             >
                                 {/* Image / Carousel */}
-                                <div className={`${project.images && project.images.length > 0 ? 'h-72' : 'h-48'} w-full overflow-hidden relative bg-gradient-to-br from-blue-500/20 to-black/60`}>
+                                <div className={`${project.images && project.images.length > 0 ? 'h-72' : 'h-48'} w-full overflow-hidden relative bg-gradient-to-br from-blue-500/20 to-white/60`}>
                                     {project.images && project.images.length > 0 ? (
                                         <ImageCarousel images={project.images} alt={project.title} />
                                     ) : (

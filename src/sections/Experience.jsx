@@ -129,7 +129,7 @@ const Experience = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 id="experience-heading" className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-text mb-3">Perjalanan Saya</h2>
+                    <h2 id="experience-heading" className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400 leading-tight mb-5">Perjalanan Saya</h2>
                     <p className="text-gray-300 max-w-xl mx-auto text-sm">Rekam jejak pengalaman, pendidikan, organisasi, dan pelatihan yang membentuk saya.</p>
                 </motion.div>
 

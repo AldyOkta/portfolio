@@ -6,7 +6,7 @@ const Services = () => {
         <section id="services" aria-labelledby="services-heading" className="relative bg-theme-surface px-8 py-24">
             <div className="container mx-auto">
                 <div className="mb-16 text-center">
-                    <h2 id="services-heading" className="bg-gradient-text bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+                    <h2 id="services-heading" className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400 transition-colors duration-500">
                         Keahlian Teknis
                     </h2>
                 </div>
