@@ -77,17 +77,20 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-24 px-8 bg-theme-surface relative overflow-hidden">
+        <section id="contact" aria-labelledby="contact-heading" className="py-24 px-8 bg-theme-surface relative overflow-hidden">
             {/* Toast Notification */}
             <AnimatePresence>
                 {isSent && (
                     <motion.div
+                        role="status"
+                        aria-live="polite"
+                        aria-atomic="true"
                         initial={{ opacity: 0, y: -50 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -50 }}
                         className="fixed top-24 right-8 bg-green-500 text-white px-6 py-4 rounded-xl shadow-2xl z-50 flex items-center gap-3"
                     >
-                        <FaCheckCircle className="text-2xl" />
+                        <FaCheckCircle className="text-2xl" aria-hidden="true" />
                         <div>
                             <h4 className="font-bold">Pesan Terkirim!</h4>
                             <p className="text-sm text-green-100">Mengalihkan ke aplikasi email anda...</p>
@@ -100,12 +103,12 @@ const Contact = () => {
 
                 {/* Info */}
                 <div className="space-y-8">
-                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Kualitas Bukan Kebetulan itu Proses!</h2>
+                    <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Kualitas Bukan Kebetulan itu Proses!</h2>
                     <p className="text-gray-300 max-w-md">Saya membantu Anda memastikan integritas data, efisiensi workflow AI, dan kualitas aplikasi yang bebas dari bug. Mari berkolaborasi untuk menciptakan solusi digital yang teruji dan stabil.</p>
 
                     <div className="space-y-6">
                         <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-theme-purple to-theme-gray flex items-center justify-center text-white">
+                            <div aria-hidden="true" className="w-12 h-12 rounded-full bg-gradient-to-r from-theme-purple to-theme-gray flex items-center justify-center text-white">
                                 <FaPhone />
                             </div>
                             <div>
@@ -114,7 +117,7 @@ const Contact = () => {
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-theme-purple to-theme-gray flex items-center justify-center text-white">
+                            <div aria-hidden="true" className="w-12 h-12 rounded-full bg-gradient-to-r from-theme-purple to-theme-gray flex items-center justify-center text-white">
                                 <FaEnvelope />
                             </div>
                             <div>
@@ -123,7 +126,7 @@ const Contact = () => {
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-theme-purple to-theme-gray flex items-center justify-center text-white">
+                            <div aria-hidden="true" className="w-12 h-12 rounded-full bg-gradient-to-r from-theme-purple to-theme-gray flex items-center justify-center text-white">
                                 <FaMapMarkerAlt />
                             </div>
                             <div>

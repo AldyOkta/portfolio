@@ -24,17 +24,17 @@ const Portfolio = () => {
         : enrichedProjects.filter(item => item.category === activeCategory);
 
     return (
-        <section id="portfolio" className="py-24 px-8 bg-theme-dark">
+        <section id="portfolio" aria-labelledby="portfolio-heading" className="py-24 px-8 bg-theme-dark">
             <div className="container mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Eksplorasi Proyek</h2>
+                    <h2 id="portfolio-heading" className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-text">Eksplorasi Proyek</h2>
                     <p className="text-gray-300 mt-3 max-w-xl mx-auto text-sm">
                         Kumpulan proyek pengembangan aplikasi dan dokumentasi kolaborasi tim dalam memastikan standar kualitas perangkat lunak yang tinggi.
                     </p>
                 </div>
 
                 {/* Filter Tabs */}
-                <div className="flex flex-wrap justify-center gap-3 mb-12">
+                <div role="group" aria-label="Filter kategori proyek" className="flex flex-wrap justify-center gap-3 mb-12">
                     {categories.map((category) => (
                         <button
                             key={category}
@@ -52,7 +52,12 @@ const Portfolio = () => {
                 </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    aria-live="polite"
+                    aria-atomic="false"
+                    aria-label={`Menampilkan ${filteredItems.length} proyek dalam kategori ${activeCategory}`}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
                     <AnimatePresence mode="popLayout">
                         {filteredItems.map((project) => (
                             <motion.div

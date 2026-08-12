@@ -113,7 +113,7 @@ const Experience = () => {
     };
 
     return (
-        <section id="experience" className="py-24 px-8 bg-theme-surface">
+        <section id="experience" aria-labelledby="experience-heading" className="py-24 px-8 bg-theme-surface">
             <div className="container mx-auto">
 
                 {/* Section Title */}
@@ -123,14 +123,14 @@ const Experience = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-text mb-3">Perjalanan Saya</h2>
+                    <h2 id="experience-heading" className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-text mb-3">Perjalanan Saya</h2>
                     <p className="text-gray-300 max-w-xl mx-auto text-sm">Rekam jejak pengalaman, pendidikan, organisasi, dan pelatihan yang membentuk saya.</p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
                     {/* LEFT: Experience */}
-                    <div>
+                    <div role="region" aria-label="Pengalaman Kerja">
                         <SectionHeading icon={FaBriefcase} title="Pengalaman Kerja" color="purple" />
                         <div className="mt-8">
                             {experience.map((item, index) => (
@@ -148,7 +148,7 @@ const Experience = () => {
                     </div>
 
                     {/* RIGHT: Education + Organisasi + Pelatihan stacked */}
-                    <div className="space-y-16">
+                    <div role="region" aria-label="Pendidikan, Organisasi, dan Pelatihan" className="space-y-16">
 
                         {/* Pendidikan */}
                         <div>

@@ -21,7 +21,12 @@ const Hero = () => {
     };
 
     return (
-        <section id="hero" className="min-h-screen pt-32 pb-20 px-8 flex flex-col justify-center relative overflow-hidden bg-theme-dark">
+        <section
+            id="hero"
+            aria-labelledby="hero-heading"
+            aria-describedby="hero-tagline"
+            className="min-h-screen pt-32 pb-20 px-8 flex flex-col justify-center relative overflow-hidden bg-theme-dark"
+        >
 
             <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
@@ -33,13 +38,13 @@ const Hero = () => {
                     className="space-y-8 order-2 lg:order-1"
                 >
                     <div>
-                        <h2 className="text-xl md:text-2xl font-semibold text-gray-200 mb-1">{name}</h2>
-                        <h1 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-text leading-tight">
+                        <p className="text-xl md:text-2xl font-semibold text-gray-200 mb-1">{name}</p>
+                        <h1 id="hero-heading" className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-text leading-tight">
                             {role}
                         </h1>
                     </div>
 
-                    <p className="text-gray-200 text-lg max-w-lg leading-relaxed">
+                    <p id="hero-tagline" className="text-gray-200 text-lg max-w-lg leading-relaxed">
                         {tagline}
                     </p>
 
@@ -90,8 +95,8 @@ const Hero = () => {
                         </div>
                     </motion.div>
 
-                    {/* Background Glow */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-theme-purple/20 rounded-full blur-[100px] -z-0"></div>
+                    {/* Background Glow – decorative only */}
+                    <div aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-theme-purple/20 rounded-full blur-[100px] -z-0"></div>
                 </div>
             </div>
 
@@ -101,13 +106,15 @@ const Hero = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5, duration: 0.8 }}
+                role="region"
+                aria-label="Statistik ringkas"
                 className="container mx-auto mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center"
             >
                 {stats.map((stat, index) => (
                     <div key={index} className="flex gap-4 items-center">
-                        <h3 className="text-5xl md:text-6xl font-bold font-outline-2 text-transparent bg-clip-text bg-white/5 stroke-white" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.3)' }}>
+                        <p aria-label={`${stat.number} ${stat.label}`} className="text-5xl md:text-6xl font-bold font-outline-2 text-transparent bg-clip-text bg-white/5 stroke-white" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.3)' }} aria-hidden="true">
                             {stat.number}
-                        </h3>
+                        </p>
                         <span className="text-gray-400 text-sm max-w-[80px] leading-tight block">
                             {stat.label}
                         </span>

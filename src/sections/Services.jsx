@@ -3,10 +3,10 @@ import { services } from '../data/portfolioData';
 
 const Services = () => {
     return (
-        <section id="services" className="relative bg-theme-surface px-8 py-24">
+        <section id="services" aria-labelledby="services-heading" className="relative bg-theme-surface px-8 py-24">
             <div className="container mx-auto">
                 <div className="mb-16 text-center">
-                    <h2 className="bg-gradient-text bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+                    <h2 id="services-heading" className="bg-gradient-text bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
                         Keahlian Teknis
                     </h2>
                 </div>

@@ -34,27 +34,33 @@ const Skills = () => {
     ];
 
     return (
-        <section id="skills" className="py-24 px-8 bg-theme-dark">
+        <section id="skills" aria-labelledby="skills-heading" className="py-24 px-8 bg-theme-dark">
             <div className="container mx-auto">
-                <h2 className="text-4xl font-bold mb-16 text-center text-transparent bg-clip-text bg-gradient-text">Skills</h2>
+                <h2 id="skills-heading" className="text-4xl font-bold mb-16 text-center text-transparent bg-clip-text bg-gradient-text">Skills</h2>
 
                 <div className="space-y-16">
                     {categories.map((category) => (
                         <div key={category.key}>
                             <h3 className="text-2xl font-bold text-white mb-8 border-l-4 border-theme-purple pl-4">{category.title}</h3>
-                            <div className="flex flex-wrap gap-6">
+                            <ul
+                                aria-label={`Daftar skill ${category.title}`}
+                                className="flex flex-wrap gap-6 list-none p-0 m-0"
+                            >
                                 {skills[category.key]?.map((skill, index) => {
                                     const skillData = skillIcons[skill] || { icon: <FaRobot />, color: "text-gray-400" };
                                     return (
-                                        <div key={index} className="group flex flex-col items-center gap-4 p-6 bg-white/5 rounded-2xl hover:bg-theme-purple/20 transition-all duration-300 border border-white/10 hover:border-theme-purple hover:-translate-y-2 min-w-[120px]">
-                                            <div className={`text-5xl ${skillData.color} drop-shadow-lg transition-transform duration-500 group-hover:scale-110`}>
+                                        <li key={index} className="group flex flex-col items-center gap-4 p-6 bg-white/5 rounded-2xl hover:bg-theme-purple/20 transition-all duration-300 border border-white/10 hover:border-theme-purple hover:-translate-y-2 min-w-[120px]">
+                                            <div
+                                                aria-hidden="true"
+                                                className={`text-5xl ${skillData.color} drop-shadow-lg transition-transform duration-500 group-hover:scale-110`}
+                                            >
                                                 {skillData.icon}
                                             </div>
                                             <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">{skill}</span>
-                                        </div>
+                                        </li>
                                     );
                                 })}
-                            </div>
+                            </ul>
                         </div>
                     ))}
                 </div>
@@ -64,3 +70,4 @@ const Skills = () => {
 };
 
 export default Skills;
+
