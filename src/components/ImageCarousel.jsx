@@ -55,10 +55,10 @@ const ImageCarousel = ({ images }) => {
     return (
         <>
             {/* Inline Carousel */}
-            <div className="absolute inset-0 bg-black/40 cursor-pointer" onClick={openLightbox}>
+            <div className="absolute inset-0 bg-black/40 cursor-pointer" onClick={openLightbox} role="button" aria-label="Buka gambar lebih besar" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && openLightbox(e)}>
                 <img
                     src={images[index]}
-                    alt=""
+                    alt={`Gambar proyek ${index + 1} dari ${images.length}`}
                     className="w-full h-full object-contain"
                 />
 
@@ -66,15 +66,17 @@ const ImageCarousel = ({ images }) => {
                     <>
                         <button
                             onClick={prev}
+                            aria-label="Gambar sebelumnya"
                             className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-theme-purple/80 text-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm"
                         >
-                            <FaChevronLeft size={12} />
+                            <FaChevronLeft size={12} aria-hidden="true" />
                         </button>
                         <button
                             onClick={next}
+                            aria-label="Gambar berikutnya"
                             className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-theme-purple/80 text-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm"
                         >
-                            <FaChevronRight size={12} />
+                            <FaChevronRight size={12} aria-hidden="true" />
                         </button>
 
                         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5 bg-black/40 backdrop-blur-sm px-2.5 py-1.5 rounded-full">
@@ -86,6 +88,8 @@ const ImageCarousel = ({ images }) => {
                                         e.stopPropagation();
                                         setIndex(i);
                                     }}
+                                    aria-label={`Lihat gambar ${i + 1}`}
+                                    aria-current={i === index ? 'true' : undefined}
                                     className={`h-1.5 rounded-full transition-all duration-300 ${i === index
                                             ? "bg-theme-purple w-5"
                                             : "bg-white/40 w-1.5 hover:bg-white/70"
@@ -115,9 +119,10 @@ const ImageCarousel = ({ images }) => {
                         {/* Close Button */}
                         <button
                             onClick={closeLightbox}
+                            aria-label="Tutup lightbox"
                             className="absolute top-6 right-6 z-50 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300"
                         >
-                            <FaTimes size={18} />
+                            <FaTimes size={18} aria-hidden="true" />
                         </button>
 
                         {/* Counter */}
@@ -133,7 +138,7 @@ const ImageCarousel = ({ images }) => {
                             exit={{ opacity: 0, scale: 0.9 }}
                             transition={{ duration: 0.3 }}
                             src={images[index]}
-                            alt=""
+                            alt={`Gambar proyek ${index + 1} dari ${images.length}`}
                             className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl"
                             onClick={(e) => e.stopPropagation()}
                         />
@@ -143,15 +148,17 @@ const ImageCarousel = ({ images }) => {
                             <>
                                 <button
                                     onClick={prev}
+                                    aria-label="Gambar sebelumnya"
                                     className="absolute left-4 top-1/2 -translate-y-1/2 z-50 bg-white/10 hover:bg-theme-purple/70 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 backdrop-blur-sm"
                                 >
-                                    <FaChevronLeft size={18} />
+                                    <FaChevronLeft size={18} aria-hidden="true" />
                                 </button>
                                 <button
                                     onClick={next}
+                                    aria-label="Gambar berikutnya"
                                     className="absolute right-4 top-1/2 -translate-y-1/2 z-50 bg-white/10 hover:bg-theme-purple/70 text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 backdrop-blur-sm"
                                 >
-                                    <FaChevronRight size={18} />
+                                    <FaChevronRight size={18} aria-hidden="true" />
                                 </button>
                             </>
                         )}
@@ -165,12 +172,14 @@ const ImageCarousel = ({ images }) => {
                                         e.stopPropagation();
                                         setIndex(i);
                                     }}
+                                    aria-label={`Lihat gambar ${i + 1}`}
+                                    aria-current={i === index ? 'true' : undefined}
                                     className={`w-14 h-14 rounded-lg overflow-hidden border-2 transition-all duration-300 ${i === index
                                             ? "border-theme-purple shadow-[0_0_12px_rgba(135,80,247,0.5)] scale-110"
                                             : "border-white/20 opacity-50 hover:opacity-80"
                                         }`}
                                 >
-                                    <img src={img} alt="" className="w-full h-full object-cover" />
+                                    <img src={img} alt={`Thumbnail gambar ${i + 1}`} className="w-full h-full object-cover" />
                                 </button>
                             ))}
                         </div>

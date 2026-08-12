@@ -10,9 +10,9 @@ export const profile = {
         location: "Sukoharjo, Jawa Tengah",
     },
     socialLinks: [
-        { icon: "FaGithub", href: "https://github.com/AldyOkta" },
-        { icon: "FaLinkedin", href: "https://www.linkedin.com/in/aldy-oktaviano-548174280" },
-        { icon: "FaInstagram", href: "https://www.instagram.com/oktaldyy?igsh=MTdkbWR5Z2N5NDU0Nw==" },
+        { icon: "FaGithub", label: "GitHub", href: "https://github.com/AldyOkta" },
+        { icon: "FaLinkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/aldy-oktaviano-548174280" },
+        { icon: "FaInstagram", label: "Instagram", href: "https://www.instagram.com/oktaldyy?igsh=MTdkbWR5Z2N5NDU0Nw==" },
     ],
     stats: [
         { number: "1", label: "Tahun Pengalaman" },

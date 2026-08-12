@@ -59,9 +59,10 @@ const Hero = () => {
                                         href={link.href}
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        aria-label={`Kunjungi profil ${link.label || link.icon.replace('Fa', '')} Aldy Oktaviano`}
                                         className="w-12 h-12 rounded-full border border-theme-purple/30 flex items-center justify-center text-theme-purple hover:bg-theme-purple hover:text-white hover:shadow-neon transition-all duration-300"
                                     >
-                                        <Icon />
+                                        <Icon aria-hidden="true" />
                                     </a>
                                 );
                             })}
@@ -82,7 +83,7 @@ const Hero = () => {
                             {/* Placeholder Grayscale Image */}
                             <img
                                 src={AldyImg}
-                                alt="Aldy"
+                                alt="Foto profil Aldy Oktaviano"
                                 className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-110"
                                 style={{ objectPosition: 'center 10%' }}
                             />

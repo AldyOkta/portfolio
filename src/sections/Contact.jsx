@@ -139,19 +139,22 @@ const Contact = () => {
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-300">Nama Depan</label>
+                                <label htmlFor="firstName" className="text-sm font-medium text-gray-300">Nama Depan</label>
                                 <input
+                                    id="firstName"
                                     type="text"
                                     name="firstName"
                                     value={formData.firstName}
                                     onChange={handleChange}
                                     placeholder="Nama Depan Anda"
+                                    aria-required="true"
                                     className="w-full p-4 bg-theme-dark rounded-lg border border-white/10 focus:border-theme-purple outline-none transition text-white"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-300">Nama Belakang</label>
+                                <label htmlFor="lastName" className="text-sm font-medium text-gray-300">Nama Belakang</label>
                                 <input
+                                    id="lastName"
                                     type="text"
                                     name="lastName"
                                     value={formData.lastName}
@@ -164,19 +167,22 @@ const Contact = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-300">Alamat Email</label>
+                                <label htmlFor="email" className="text-sm font-medium text-gray-300">Alamat Email</label>
                                 <input
+                                    id="email"
                                     type="email"
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
                                     placeholder="anda@example.com"
+                                    aria-required="true"
                                     className="w-full p-4 bg-theme-dark rounded-lg border border-white/10 focus:border-theme-purple outline-none transition text-white"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-gray-300">Nomor Telepon</label>
+                                <label htmlFor="phone" className="text-sm font-medium text-gray-300">Nomor Telepon</label>
                                 <input
+                                    id="phone"
                                     type="tel"
                                     name="phone"
                                     value={formData.phone}
@@ -188,13 +194,15 @@ const Contact = () => {
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-gray-300">Pesan</label>
+                            <label htmlFor="message" className="text-sm font-medium text-gray-300">Pesan</label>
                             <textarea
+                                id="message"
                                 name="message"
                                 rows="4"
                                 value={formData.message}
                                 onChange={handleChange}
                                 placeholder="Tulis pesan anda disini..."
+                                aria-required="true"
                                 className="w-full p-4 bg-theme-dark rounded-lg border border-white/10 focus:border-theme-purple outline-none transition text-white"
                             ></textarea>
                         </div>
