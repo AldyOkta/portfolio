@@ -20,14 +20,38 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('');
   const mobilePanelRef = useRef(null);
 
-  // 1. Scroll listener (>8px) for background opacity & bottom border
+  // 1. Scroll listener (>8px) with Lenis sync for background opacity & bottom border
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 8);
+      const y = window.__lenis ? window.__lenis.scroll : window.scrollY;
+      setScrolled(y > 8);
     };
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    let lenisTimer = null;
+    let boundLenis = null;
+
+    if (window.__lenis) {
+      boundLenis = window.__lenis;
+      boundLenis.on('scroll', handleScroll);
+    } else {
+      lenisTimer = setInterval(() => {
+        if (window.__lenis) {
+          boundLenis = window.__lenis;
+          boundLenis.on('scroll', handleScroll);
+          clearInterval(lenisTimer);
+        }
+      }, 100);
+    }
+
+    return () => {
+      if (lenisTimer) clearInterval(lenisTimer);
+      window.removeEventListener('scroll', handleScroll);
+      if (boundLenis) {
+        boundLenis.off('scroll', handleScroll);
+      }
+    };
   }, []);
 
   // 2. IntersectionObserver on Hero CV button to conditionally show navbar Download CV CTA
@@ -121,12 +145,13 @@ export default function Navbar() {
 
   const skipText = lang === 'en' ? 'Skip to content' : 'Lewati ke konten';
   const cvText = lang === 'en' ? 'Download CV' : 'Unduh CV';
+  const isHeaderOpaque = scrolled || mobileMenuOpen;
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-colors duration-200 ${
-        scrolled
-          ? 'bg-[var(--bg)]/90 border-b border-[var(--border)]'
+      className={`sticky top-0 z-50 w-full transition-all duration-200 backdrop-blur-md ${
+        isHeaderOpaque
+          ? 'bg-[var(--header-bg)] border-b border-[var(--border)] shadow-[0_1px_3px_rgba(0,0,0,0.03)]'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -141,7 +166,8 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Left: Logo (mono, 15px, --text) */}
         <a
-          href="#"
+          href="#home"
+          onClick={(e) => handleNavClick(e, '#home')}
           className="font-mono text-[15px] font-semibold text-[var(--text)] tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 rounded"
         >
           aldyokta.my.id
@@ -175,27 +201,27 @@ export default function Navbar() {
 
         {/* Far Right: Language toggle + Download CV (after hero) */}
         <div className="hidden md:flex items-center gap-5">
-          {/* Language Toggle: Plain text EN | ID */}
-          <div className="flex items-center text-sm font-medium">
+          {/* Language Toggle: Plain text EN | ID with subtle protective pill container */}
+          <div className="flex items-center text-sm font-medium px-2 py-0.5 rounded-lg bg-[var(--surface-2)]/60 border border-[var(--border)]/60">
             <button
               type="button"
               onClick={() => setLang('en')}
-              className={`transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded px-1 ${
+              className={`transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded px-1.5 py-0.5 ${
                 lang === 'en'
-                  ? 'text-[var(--text)] font-semibold'
+                  ? 'text-[var(--text)] font-semibold bg-[var(--surface)] shadow-xs'
                   : 'text-[var(--text-muted)] hover:text-[var(--text)]'
               }`}
               aria-label="Switch to English"
             >
               EN
             </button>
-            <span className="text-[var(--border)] mx-1 select-none">|</span>
+            <span className="text-[var(--border)] mx-0.5 select-none text-xs">|</span>
             <button
               type="button"
               onClick={() => setLang('id')}
-              className={`transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded px-1 ${
+              className={`transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded px-1.5 py-0.5 ${
                 lang === 'id'
-                  ? 'text-[var(--text)] font-semibold'
+                  ? 'text-[var(--text)] font-semibold bg-[var(--surface)] shadow-xs'
                   : 'text-[var(--text-muted)] hover:text-[var(--text)]'
               }`}
               aria-label="Ganti ke Bahasa Indonesia"

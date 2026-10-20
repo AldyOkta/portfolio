@@ -3,7 +3,7 @@ import { DotGridHero } from './ui/dot-grid-hero';
 import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data/portfolioData';
 
-export default function Hero() {
+export default function Hero({ isLoaded = true }) {
   const { personal } = portfolioData;
   const { t } = useLanguage();
 
@@ -20,6 +20,7 @@ export default function Hero() {
       repulsionStrength={7}
       springK={0.08}
       damping={0.82}
+      isLoaded={isLoaded}
     />
   );
 }

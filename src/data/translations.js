@@ -26,7 +26,7 @@ export const translations = {
     projects: {
       title: "Karya & Bukti Nyata",
       subtitle: "Aplikasi terverifikasi yang telah dirilis dan digunakan: mulai dari web app kolaborasi tim di Netlify, sistem AI korporasi, hingga otomatisasi perangkat IoT.",
-      countLabel: "5 Proyek Unggulan Terkurasi",
+      countLabel: "4 Proyek",
       openDemo: "Buka Demo Netlify",
       teamBadge: "Team Project • MSIB Hacktiv8",
       liveBadge: "Live on Netlify",
@@ -102,7 +102,7 @@ export const translations = {
     projects: {
       title: "Featured Works & Real Proof",
       subtitle: "Verified production applications: ranging from collaborative team web apps on Netlify, enterprise AI agents, to embedded IoT automation.",
-      countLabel: "5 Curated Projects",
+      countLabel: "4 Project",
       openDemo: "Open Netlify Demo",
       teamBadge: "Team Project • MSIB Hacktiv8",
       liveBadge: "Live on Netlify",

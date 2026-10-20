@@ -5,6 +5,7 @@
 :root {
   /* surfaces */
   --bg: #f6f3ee;            /* page background */
+  --header-bg: rgba(246, 243, 238, 0.92); /* sticky header with backdrop blur */
   --surface: #ffffff;       /* cards */
   --surface-2: #efeae2;     /* section band, tags, icon boxes, ghost buttons */
   --border: #d6cfc2;        /* card and button borders (stronger than before) */

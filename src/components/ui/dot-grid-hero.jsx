@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Download, MapPin } from "lucide-react";
 import { cn } from "../../lib/utils";
 
@@ -18,6 +18,7 @@ export function DotGridHero({
   springK = 0.08,
   damping = 0.82,
   className,
+  isLoaded = true,
 }) {
   const canvasRef = React.useRef(null);
   const mouseRef = React.useRef({ x: -9999, y: -9999, active: false });
@@ -222,32 +223,60 @@ export function DotGridHero({
   }, [dotGap, interactionRadius, repulsionStrength, springK, damping, reduceMotion]);
 
   return (
-    <section className={cn("relative isolate flex min-h-[90svh] items-center justify-center overflow-hidden pt-28 pb-20 bg-[var(--bg)]", className)}>
-      <canvas
+    <section id="home" className={cn("relative isolate flex min-h-[90svh] items-center justify-center overflow-hidden pt-28 pb-20 bg-[var(--bg)]", className)}>
+      <motion.canvas
         ref={canvasRef}
         aria-hidden
+        initial={reduceMotion ? false : { opacity: 0 }}
+        animate={reduceMotion ? false : { opacity: isLoaded ? 1 : 0 }}
+        transition={{ duration: 1.0, ease: "easeOut" }}
         className="absolute inset-0 h-full w-full pointer-events-none z-0"
       />
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
-        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[var(--text)] mb-4">
+        <motion.h1
+          initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+          animate={reduceMotion ? false : (isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 })}
+          transition={{ duration: 0.75, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[var(--text)] mb-4"
+        >
           {name}
-        </h1>
+        </motion.h1>
 
-        <p className="text-xl sm:text-2xl font-semibold text-[var(--text-body)] mb-3">
+        <motion.p
+          initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+          animate={reduceMotion ? false : (isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 22 })}
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="text-xl sm:text-2xl font-semibold text-[var(--text-body)] mb-3"
+        >
           {role}
-        </p>
+        </motion.p>
 
-        <p className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--text-muted)] mb-6">
+        <motion.p
+          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          animate={reduceMotion ? false : (isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 })}
+          transition={{ duration: 0.65, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--text-muted)] mb-6"
+        >
           <MapPin className="w-4 h-4 text-[var(--text-muted)]" />
           <span>{location}</span>
-        </p>
+        </motion.p>
 
-        <p className="mx-auto max-w-2xl text-base sm:text-lg text-[var(--text-body)] leading-relaxed mb-10">
+        <motion.p
+          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          animate={reduceMotion ? false : (isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 })}
+          transition={{ duration: 0.65, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="mx-auto max-w-2xl text-base sm:text-lg text-[var(--text-body)] leading-relaxed mb-10"
+        >
           {summary}
-        </p>
+        </motion.p>
 
-        <div className="flex items-center justify-center">
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          animate={reduceMotion ? false : (isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 })}
+          transition={{ duration: 0.65, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          className="flex items-center justify-center"
+        >
           <a
             id="hero-cv-btn"
             href={cvUrl}
@@ -257,7 +286,7 @@ export function DotGridHero({
             <Download className="w-4 h-4 text-white" />
             <span>{downloadText}</span>
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

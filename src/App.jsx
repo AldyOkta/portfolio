@@ -25,7 +25,7 @@ export default function App() {
         <div className="min-h-svh bg-[var(--bg)] text-[var(--text)] font-sans">
           <Navbar />
           <main id="main-content">
-            <Hero />
+            <Hero isLoaded={preloaderFinished} />
             <About />
             <Projects />
             <Skills />

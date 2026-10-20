@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+import { BlurText } from './blur-text';
 
 export default function WeightSweepPreloader({
   onComplete,
-  duration = 2.6,
+  duration = 2.0,
   name = "Aldy Oktaviano",
-  italicLine = "Quality Assurance & Frontend Engineering"
+  role = "Quality Assurance & Frontend Developer",
 }) {
   const reduceMotion = useReducedMotion();
   const [progress, setProgress] = useState(0);
-  const [stage, setStage] = useState('sweeping'); // sweeping -> ink-rise -> exit -> done
+  const [stage, setStage] = useState('sweeping'); // sweeping -> ink-rise -> curtain-up -> done
+  const [showCounterScreen, setShowCounterScreen] = useState(true);
 
   useEffect(() => {
     if (reduceMotion) {
@@ -31,12 +33,17 @@ export default function WeightSweepPreloader({
       if (rawProgress < 1) {
         requestAnimationFrame(frame);
       } else {
-        setTimeout(() => setStage('ink-rise'), 250);
-        setTimeout(() => setStage('exit'), 1400);
+        // Step 1: Counter reaches 100%, raise the dark ink panel displaying the role
+        setTimeout(() => setStage('ink-rise'), 100);
+
+        // Step 2: Once dark ink curtain covers the screen (450ms after ink-rise), unmount Layer 1 completely
+        setTimeout(() => setShowCounterScreen(false), 550);
+
+        // Step 3: Keep role visible for ~1750ms so BlurText ripple finishes, then lift curtain to reveal Hero
         setTimeout(() => {
-          setStage('done');
+          setStage('curtain-up');
           onComplete?.();
-        }, 2200);
+        }, 1850);
       }
     }
 
@@ -50,17 +57,16 @@ export default function WeightSweepPreloader({
   const tickWeights = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
   return (
-    <AnimatePresence>
-      {stage !== 'done' && (
-        <motion.div
-          className="fixed inset-0 z-[9999] flex flex-col justify-between bg-[var(--bg)] text-[var(--text)] select-none overflow-hidden"
-          exit={{ y: '-100%' }}
-          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-        >
+    <div className="fixed inset-0 z-[9999] select-none pointer-events-auto">
+      {/* Layer 1: Sweeping Counter Screen (Cleanly unmounted before curtain lifts) */}
+      {showCounterScreen && stage !== 'curtain-up' && (
+        <div className="absolute inset-0 flex flex-col justify-between bg-[var(--bg)] text-[var(--text)] overflow-hidden">
           {/* Top Bar: Name & Specimen Tag */}
           <div className="w-full max-w-6xl mx-auto px-6 pt-8 flex items-center justify-between text-sm text-[var(--text-muted)]">
             <span className="font-semibold text-[var(--text)]">{name}</span>
-            <span className="font-mono text-xs text-[var(--accent)]">VARIABLE SPECIMEN // WGHT {currentWeight}</span> {/* taste-skill-ignore */}
+            <span className="font-mono text-xs text-[var(--accent)]">
+              VARIABLE SPECIMEN // WGHT {currentWeight}
+            </span>
           </div>
 
           {/* Center Stage: Giant Weight Sweep Counter */}
@@ -101,38 +107,50 @@ export default function WeightSweepPreloader({
             <span>LOADING ASSETS &amp; RUNTIME</span>
             <span className="text-[var(--accent)] font-semibold">{progress}%</span>
           </div>
+        </div>
+      )}
 
-          {/* Ink Panel Rise (Overnight specimen layer with italic line) */}
-          <AnimatePresence>
-            {(stage === 'ink-rise' || stage === 'exit') && (
-              <motion.div
-                initial={{ y: '100%' }}
-                animate={{ y: '0%' }}
-                exit={{ y: '-100%' }}
-                transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
-                className="absolute inset-0 bg-[var(--text)] text-[var(--bg)] flex flex-col items-center justify-center p-8 z-20"
-              >
-                <motion.p
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.15, duration: 0.5 }}
-                  className="font-serif italic text-2xl sm:text-4xl text-[var(--bg)] text-center max-w-xl leading-relaxed"
-                >
-                  &ldquo;{italicLine}&rdquo;
-                </motion.p>
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3, duration: 0.4 }}
-                  className="mt-4 text-sm text-[var(--accent)] font-semibold"
-                >
-                  {name}
-                </motion.span>
-              </motion.div>
-            )}
-          </AnimatePresence>
+      {/* Layer 2: Ink Panel (Slides up displaying role, then lifts up like a curtain) */}
+      {(stage === 'ink-rise' || stage === 'curtain-up') && (
+        <motion.div
+          initial={{ y: '100%' }}
+          animate={{
+            y: stage === 'curtain-up' ? '-100%' : '0%',
+          }}
+          transition={{
+            duration: stage === 'curtain-up' ? 0.8 : 0.65,
+            ease: [0.76, 0, 0.24, 1], // Smooth luxury cubic easing
+          }}
+          onAnimationComplete={() => {
+            if (stage === 'curtain-up') {
+              setStage('done');
+            }
+          }}
+          className="absolute inset-0 bg-[var(--text)] text-[var(--bg)] flex flex-col items-center justify-center p-8 z-20 shadow-2xl"
+        >
+          <div className="font-serif italic text-2xl sm:text-4xl lg:text-5xl text-[var(--bg)] text-center max-w-3xl leading-relaxed flex items-center justify-center">
+            <span className="opacity-60 select-none mr-2">&ldquo;</span>
+            <BlurText
+              text={role}
+              trigger={stage === 'ink-rise' || stage === 'curtain-up'}
+              animateBy="words"
+              delay={0.09}
+              highlightWord="&"
+              highlightClassName="text-[var(--accent-on-dark)] font-sans not-italic font-bold"
+              className="font-serif italic text-[var(--bg)] text-center"
+            />
+            <span className="opacity-60 select-none ml-2">&rdquo;</span>
+          </div>
+          <motion.span
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.65, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-6 text-xs sm:text-sm text-[var(--accent-on-dark)] font-mono font-semibold tracking-widest uppercase"
+          >
+            {name}
+          </motion.span>
         </motion.div>
       )}
-    </AnimatePresence>
+    </div>
   );
 }
