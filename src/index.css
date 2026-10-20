@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* surfaces */
+  --bg: #f6f3ee;            /* page background */
+  --surface: #ffffff;       /* cards */
+  --surface-2: #efeae2;     /* section band, tags, icon boxes, ghost buttons */
+  --border: #d6cfc2;        /* card and button borders (stronger than before) */
+
+  /* text tiers */
+  --text: #1c1f26;          /* tier 1: headings, card titles, role names */
+  --text-body: #3a404c;     /* tier 2: paragraphs, bullets */
+  --text-muted: #5b6270;    /* tier 3: dates, company, tags, labels, location */
+
+  /* accent (tier 4, rare) */
+  --accent: #96551f;
+  --accent-hover: #804618;  /* 6% darker */
+  --accent-on-dark: #d9a066; /* accent on the dark footer only */
+
+  /* status */
+  --pass: #1f7a4a;          /* status chips only */
+  --info: #2f5fb3;
+
+  /* footer */
+  --footer-bg: #1c1f26;
+  --footer-card: #2a2f3a;
+  --footer-card-hover: #343b48;
+  --footer-text: #e8e6e3;
+  --footer-muted: #a3a9b5;
+
+  /* dot-grid hero */
+  --dot: rgba(28, 31, 38, 0.10);
+  --dot-active: #96551f;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+section[id] {
+  scroll-margin-top: 80px;
+}
