@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
-import SmoothScroll from './components/ui/SmoothScroll';
+import SmoothScroll from './components/ui/SmoothScroll'
 import WeightSweepPreloader from './components/ui/weight-sweep-preloader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';

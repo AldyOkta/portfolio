@@ -37,7 +37,7 @@ export const portfolioData = {
       id: "aksara-assistant",
       title: "Aksara Assistant - AI Sales Data Agent",
       category: "Fullstack & AI Integration",
-      badge: "PT Tiga Serangkai Internal Project",
+      badge: "PT Tiga Serangkai Inti Corpora Internal Project",
       description: "Asisten cerdas berbasis web chat UI interaktif terintegrasi Socket.io dan n8n AI Agent. Membantu tim sales merekapitulasi, memvalidasi, dan mengkueri data kunjungan lapangan secara otomatis.",
       tags: ["React.js", "Socket.io", "n8n AI Agent", "Tailwind CSS", "REST API"],
       featured: true,

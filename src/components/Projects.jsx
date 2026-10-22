@@ -81,8 +81,8 @@ export default function Projects() {
 
               <p className="text-base text-[var(--text-body)] leading-relaxed mb-6">
                 {lang === 'en'
-                  ? "Intelligent enterprise AI assistant featuring an interactive web chat connected to n8n AI Agents and Socket.io at PT Tiga Serangkai. Helps sales teams validate, aggregate, and query field visit data automatically."
-                  : "Asisten AI cerdas berbasis antarmuka web chat terhubung ke n8n AI Agent dan Socket.io di PT Tiga Serangkai. Digunakan tim sales lapangan untuk validasi, rekapitulasi, dan pelaporan data kunjungan secara otomatis."
+                  ? "Intelligent enterprise AI assistant featuring an interactive web chat connected to n8n AI Agents and Socket.io at PT Tiga Serangkai Inti Corpora. Helps sales teams validate, aggregate, and query field visit data automatically."
+                  : "Asisten AI cerdas berbasis antarmuka web chat terhubung ke n8n AI Agent dan Socket.io di PT Tiga Serangkai Inti Corpora. Digunakan tim sales lapangan untuk validasi, rekapitulasi, dan pelaporan data kunjungan secara otomatis."
                 }
               </p>
 
