@@ -11,8 +11,12 @@ export function LanguageProvider({ children }) {
     } catch (e) {
       // fallback
     }
-    return 'id';
+    return 'en';
   });
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const setLang = (newLang) => {
     setLangState(newLang);
@@ -27,7 +31,7 @@ export function LanguageProvider({ children }) {
     setLang(lang === 'id' ? 'en' : 'id');
   };
 
-  const t = translations[lang] || translations.id;
+  const t = translations[lang] || translations.en;
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, toggleLang, t }}>

@@ -30,7 +30,7 @@ export default function Footer() {
     if (!el) return;
 
     if (window.__lenis) {
-      window.__lenis.scrollTo(el, { offset: -80, duration: 1.0 });
+      window.__lenis.scrollTo(el, { offset: 0, duration: 1.0 });
     } else {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       el.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
@@ -68,7 +68,7 @@ export default function Footer() {
                     key={link.id}
                     href={`#${link.id}`}
                     onClick={(e) => handleNavClick(e, `#${link.id}`)}
-                    className="text-sm text-[var(--footer-muted)] hover:text-[var(--accent-on-dark)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-on-dark)] rounded"
+                    className="text-sm text-[var(--footer-muted)] hover:text-[var(--footer-text)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
                   >
                     {label}
                   </a>
@@ -81,7 +81,7 @@ export default function Footer() {
           <div className="md:col-span-4 flex flex-col space-y-2.5 text-sm">
             <a
               href={`mailto:${personal.email}`}
-              className="text-[var(--footer-text)] hover:underline break-all transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-on-dark)] rounded"
+              className="text-[var(--footer-text)] hover:underline break-all transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
             >
               {personal.email}
             </a>
@@ -90,7 +90,7 @@ export default function Footer() {
               href={personal.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--footer-muted)] hover:text-[var(--accent-on-dark)] hover:underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-on-dark)] rounded"
+              className="text-[var(--footer-muted)] hover:text-[var(--footer-text)] hover:underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
             >
               LinkedIn
             </a>
@@ -99,24 +99,26 @@ export default function Footer() {
               href={personal.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--footer-muted)] hover:text-[var(--accent-on-dark)] hover:underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-on-dark)] rounded"
+              className="text-[var(--footer-muted)] hover:text-[var(--footer-text)] hover:underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
             >
               GitHub
             </a>
 
+            {/* SATU elemen utama dengan var(--accent-on-dark) sesuai saran.md */}
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--footer-muted)] hover:text-[var(--accent-on-dark)] hover:underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-on-dark)] rounded"
+              className="text-[var(--accent-on-dark)] hover:underline font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-on-dark)] rounded"
             >
               WhatsApp
             </a>
 
             <a
               href={personal.cvPath}
-              download="CV_Aldy_Oktaviano.pdf"
-              className="text-[var(--footer-muted)] hover:text-[var(--accent-on-dark)] hover:underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-on-dark)] rounded"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--footer-muted)] hover:text-[var(--footer-text)] hover:underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
             >
               {lang === 'en' ? 'Download CV' : 'Unduh CV'}
             </a>
@@ -136,7 +138,7 @@ export default function Footer() {
           <button
             type="button"
             onClick={scrollToTop}
-            className="text-sm text-[var(--footer-muted)] hover:text-[var(--accent-on-dark)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-on-dark)] rounded py-1 px-1.5"
+            className="text-sm text-[var(--footer-muted)] hover:text-[var(--footer-text)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded py-1 px-1.5"
           >
             {lang === 'en' ? 'Back to top ↑' : 'Kembali ke atas ↑'}
           </button>

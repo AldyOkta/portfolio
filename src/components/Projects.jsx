@@ -32,9 +32,9 @@ export default function Projects() {
         
         {/* Project 1 (WIDE: 7 COLS) — Movie Discovery Web App */}
         <AnimatedSection animation="fade-up" delay={0} className="md:col-span-7">
-          <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] p-8 sm:p-10 flex flex-col justify-between h-full">
+          <div className="rounded-3xl bg-[var(--surface)] border border-[var(--accent-border)] hover:border-[var(--border-strong)] transition-colors p-8 sm:p-10 flex flex-col justify-between h-full">
             <div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text)] mb-3">
+              <h3 className="text-2xl sm:text-3xl font-semibold text-[var(--text)] mb-3">
                 Movie Search &amp; Discovery Web App
               </h3>
 
@@ -73,9 +73,9 @@ export default function Projects() {
 
         {/* Project 2 (COMPACT: 5 COLS) — Aksara Assistant AI */}
         <AnimatedSection animation="fade-up" delay={0.08} className="md:col-span-5">
-          <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] p-8 sm:p-10 flex flex-col justify-between h-full">
+          <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors p-8 sm:p-10 flex flex-col justify-between h-full">
             <div>
-              <h3 className="text-2xl font-extrabold text-[var(--text)] mb-3">
+              <h3 className="text-2xl font-semibold text-[var(--text)] mb-3">
                 Aksara Assistant AI
               </h3>
 
@@ -104,9 +104,9 @@ export default function Projects() {
 
         {/* Project 3 (COMPACT: 5 COLS) — Hotel Booking App */}
         <AnimatedSection animation="fade-up" delay={0.12} className="md:col-span-5">
-          <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] p-8 sm:p-10 flex flex-col justify-between h-full">
+          <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors p-8 sm:p-10 flex flex-col justify-between h-full">
             <div>
-              <h3 className="text-2xl font-extrabold text-[var(--text)] mb-3">
+              <h3 className="text-2xl font-semibold text-[var(--text)] mb-3">
                 Hotel Booking Mobile
               </h3>
 
@@ -134,9 +134,9 @@ export default function Projects() {
 
         {/* Project 4 (WIDE: 7 COLS) — Hydroponic IoT Automation */}
         <AnimatedSection animation="fade-up" delay={0.16} className="md:col-span-7">
-          <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] p-8 sm:p-10 flex flex-col justify-between h-full">
+          <div className="rounded-3xl bg-[var(--surface)] border border-[var(--accent-border)] hover:border-[var(--border-strong)] transition-colors p-8 sm:p-10 flex flex-col justify-between h-full">
             <div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text)] mb-3">
+              <h3 className="text-2xl sm:text-3xl font-semibold text-[var(--text)] mb-3">
                 Hydroponic Smart Automation System
               </h3>
 
@@ -156,9 +156,11 @@ export default function Projects() {
               </div>
             </div>
 
-            <div className="pt-4 text-sm text-[var(--pass)] font-semibold flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[var(--pass)]" />
-              <span>{t.projects.p4Predicate}</span>
+            <div className="pt-4 flex items-center">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--pass-soft)] text-sm font-semibold text-[var(--pass)]">
+                <ShieldCheck className="w-4 h-4 text-[var(--pass)]" />
+                <span>{t.projects.p4Predicate}</span>
+              </span>
             </div>
           </div>
         </AnimatedSection>

@@ -27,9 +27,9 @@ export default function Skills() {
         <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.08}>
 
           <StaggerItem>
-            <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] p-8 flex flex-col justify-between h-full">
+            <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors p-8 flex flex-col justify-between h-full">
               <div>
-                <h3 className="text-xl font-bold text-[var(--text)] mb-1">{t.skills.qaTitle}</h3>
+                <h3 className="text-xl font-semibold text-[var(--text)] mb-1">{t.skills.qaTitle}</h3>
                 <p className="text-sm text-[var(--text-muted)] mb-6 font-medium">{t.skills.qaSub}</p>
                 <ul className="space-y-3">
                   {skills.qa.map((item, idx) => (
@@ -43,9 +43,9 @@ export default function Skills() {
           </StaggerItem>
 
           <StaggerItem>
-            <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] p-8 flex flex-col justify-between h-full">
+            <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors p-8 flex flex-col justify-between h-full">
               <div>
-                <h3 className="text-xl font-bold text-[var(--text)] mb-1">{t.skills.feTitle}</h3>
+                <h3 className="text-xl font-semibold text-[var(--text)] mb-1">{t.skills.feTitle}</h3>
                 <p className="text-sm text-[var(--text-muted)] mb-6 font-medium">{t.skills.feSub}</p>
                 <ul className="space-y-3">
                   {skills.frontend.map((item, idx) => (
@@ -59,9 +59,9 @@ export default function Skills() {
           </StaggerItem>
 
           <StaggerItem>
-            <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] p-8 flex flex-col justify-between h-full">
+            <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors p-8 flex flex-col justify-between h-full">
               <div>
-                <h3 className="text-xl font-bold text-[var(--text)] mb-1">{t.skills.toolsTitle}</h3>
+                <h3 className="text-xl font-semibold text-[var(--text)] mb-1">{t.skills.toolsTitle}</h3>
                 <p className="text-sm text-[var(--text-muted)] mb-6 font-medium">{t.skills.toolsSub}</p>
                 <div className="flex flex-wrap gap-2 pt-2">
                   {skills.tools.map((item, idx) => (

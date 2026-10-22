@@ -13,6 +13,7 @@ export default {
           surface: "var(--surface)",
           surface2: "var(--surface-2)",
           border: "var(--border)",
+          borderStrong: "var(--border-strong)",
         },
         text: {
           DEFAULT: "var(--text)",
@@ -23,9 +24,17 @@ export default {
           DEFAULT: "var(--accent)",
           dark: "var(--accent-on-dark)",
           hover: "#804618",
+          soft: "var(--accent-soft)",
+          border: "var(--accent-border)",
         },
-        pass: "var(--pass)",
-        info: "var(--info)",
+        pass: {
+          DEFAULT: "var(--pass)",
+          soft: "var(--pass-soft)",
+        },
+        info: {
+          DEFAULT: "var(--info)",
+          soft: "var(--info-soft)",
+        },
         footer: {
           bg: "var(--footer-bg)",
           text: "var(--footer-text)",

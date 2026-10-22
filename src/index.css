@@ -9,6 +9,7 @@
   --surface: #ffffff;       /* cards */
   --surface-2: #efeae2;     /* section band, tags, icon boxes, ghost buttons */
   --border: #d6cfc2;        /* card and button borders (stronger than before) */
+  --border-strong: #b9b0a0; /* stronger border for active / hover cards */
 
   /* text tiers */
   --text: #1c1f26;          /* tier 1: headings, card titles, role names */
@@ -18,11 +19,15 @@
   /* accent (tier 4, rare) */
   --accent: #96551f;
   --accent-hover: #804618;  /* 6% darker */
+  --accent-soft: #f3e4d3;   /* soft accent background for active/featured badges */
+  --accent-border: #e2c4a2; /* border for featured cards */
   --accent-on-dark: #d9a066; /* accent on the dark footer only */
 
   /* status */
   --pass: #1f7a4a;          /* status chips only */
+  --pass-soft: #e3f1e9;     /* soft background for pass status */
   --info: #2f5fb3;
+  --info-soft: #e4ecf8;     /* soft background for info status */
 
   /* footer */
   --footer-bg: #1c1f26;

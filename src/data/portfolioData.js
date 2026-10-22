@@ -10,7 +10,7 @@ export const portfolioData = {
     whatsappDisplay: "+62 896-0157-9321",
     linkedin: "https://www.linkedin.com/in/aldy-oktaviano-548174280",
     github: "https://github.com/AldyOkta",
-    cvPath: "/CV_Aldy_Oktaviano.pdf",
+    cvPath: "https://drive.google.com/file/d/1Ez6NzttGfwHsggKy0apQlq2_679Qrntf/view?usp=sharing",
     domain: "aldyokta.my.id"
   },
 

@@ -18,11 +18,11 @@ export default function About() {
           </AnimatedSection>
           
           <AnimatedSection animation="fade-left" delay={0.08}>
-            <div className="p-7 rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
+            <div className="p-7 rounded-2xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors">
               <p className="text-sm font-medium text-[var(--text-muted)] mb-1">
                 {t.about.formalEdu}
               </p>
-              <p className="text-lg font-bold text-[var(--text)] mb-1">
+              <p className="text-lg font-semibold text-[var(--text)] mb-1">
                 {education[0].degree}
               </p>
               <p className="text-base text-[var(--text-muted)] mb-4">

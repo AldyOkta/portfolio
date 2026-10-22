@@ -28,12 +28,12 @@ export default function Certifications() {
         <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.06}>
           {certifications.map((cert, idx) => (
             <StaggerItem key={idx}>
-              <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] p-7 flex flex-col justify-between h-full">
+              <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors p-7 flex flex-col justify-between h-full">
                 <div>
                   <div className="w-11 h-11 rounded-xl bg-[var(--surface-2)] text-[var(--text-muted)] flex items-center justify-center mb-5">
                     <Award className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-bold text-[var(--text)] mb-2 leading-snug">
+                  <h3 className="text-base font-semibold text-[var(--text)] mb-2 leading-snug">
                     {cert.title}
                   </h3>
                   <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-6">

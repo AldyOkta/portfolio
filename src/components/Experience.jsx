@@ -57,6 +57,16 @@ export default function Experience() {
 
   const list = lang === 'en' ? experiencesEn : experiences;
 
+  const getTypeChipClasses = (type) => {
+    if (type === 'Full-time') {
+      return 'bg-[var(--pass-soft)] text-[var(--pass)] font-semibold';
+    }
+    if (type === 'Training & Certification' || type === 'Pelatihan & Sertifikasi') {
+      return 'bg-[var(--info-soft)] text-[var(--info)] font-semibold';
+    }
+    return 'bg-[var(--surface-2)] text-[var(--text-muted)] font-medium';
+  };
+
   return (
     <section id="experience" className="py-14 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
       <div className="mb-12">
@@ -73,40 +83,48 @@ export default function Experience() {
       </div>
 
       <div className="space-y-6">
-        {list.map((exp, idx) => (
-          <AnimatedSection key={idx} animation="fade-up" delay={idx * 0.08}>
-            <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] p-8 sm:p-10">
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                <span className="inline-flex items-center gap-2 text-sm font-medium text-[var(--text-muted)] bg-[var(--surface-2)] px-3.5 py-1 rounded-full">
-                  <Calendar className="w-4 h-4 text-[var(--text-muted)]" />
-                  <code>{exp.period}</code>
-                </span>
-                <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--text-muted)] px-3 py-1 rounded-full bg-[var(--surface-2)]">
-                  <span className={`w-2 h-2 rounded-full ${exp.current || idx === 0 ? 'bg-[var(--pass)]' : 'bg-[var(--text-muted)]'}`} />
-                  {exp.type}
-                </span>
+        {list.map((exp, idx) => {
+          const isLatest = exp.current || idx === 0;
+          return (
+            <AnimatedSection key={idx} animation="fade-up" delay={idx * 0.08}>
+              <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors p-8 sm:p-10">
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <div className="inline-flex items-center gap-2 text-sm font-medium text-[var(--text-muted)] bg-[var(--surface-2)] px-3.5 py-1 rounded-full">
+                    <Calendar className="w-4 h-4 text-[var(--text-muted)]" />
+                    <code>{exp.period}</code>
+                    {/* {isLatest && (
+                      <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-[var(--accent-soft)] text-[var(--accent)]">
+                        {lang === 'en' ? 'Present' : 'Sekarang'}
+                      </span>
+                    )} */}
+                  </div>
+                  <span className={`inline-flex items-center gap-1.5 text-sm px-3 py-1 rounded-full ${getTypeChipClasses(exp.type)}`}>
+                    <span className={`w-2 h-2 rounded-full ${exp.type === 'Full-time' ? 'bg-[var(--pass)]' : exp.type.includes('Training') || exp.type.includes('Pelatihan') ? 'bg-[var(--info)]' : 'bg-[var(--text-muted)]'}`} />
+                    {exp.type}
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-semibold text-[var(--text)] mb-2">
+                  {exp.role}
+                </h3>
+
+                <div className="flex items-center gap-2 text-sm text-[var(--text-muted)] font-medium mb-6">
+                  <Building2 className="w-4 h-4 text-[var(--text-muted)]" />
+                  <span>{exp.company}</span>
+                </div>
+
+                <ul className="space-y-3 text-base text-[var(--text-body)]">
+                  {exp.responsibilities.map((resp, rIdx) => (
+                    <li key={rIdx} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-4 h-4 text-[var(--text-muted)] shrink-0 mt-1" />
+                      <span className="leading-relaxed">{resp}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              <h3 className="text-2xl font-bold text-[var(--text)] mb-2">
-                {exp.role}
-              </h3>
-
-              <div className="flex items-center gap-2 text-sm text-[var(--text-muted)] font-medium mb-6">
-                <Building2 className="w-4 h-4 text-[var(--text-muted)]" />
-                <span>{exp.company}</span>
-              </div>
-
-              <ul className="space-y-3 text-base text-[var(--text-body)]">
-                {exp.responsibilities.map((resp, rIdx) => (
-                  <li key={rIdx} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-[var(--text-muted)] shrink-0 mt-1" />
-                    <span className="leading-relaxed">{resp}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </AnimatedSection>
-        ))}
+            </AnimatedSection>
+          );
+        })}
       </div>
     </section>
   );

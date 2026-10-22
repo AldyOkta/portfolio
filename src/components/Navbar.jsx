@@ -19,13 +19,49 @@ export default function Navbar() {
   const [showNavbarCv, setShowNavbarCv] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const mobilePanelRef = useRef(null);
+  const isClickScrolling = useRef(false);
+  const clickTimer = useRef(null);
 
-  // 1. Scroll listener (>8px) with Lenis sync for background opacity & bottom border
+  // 1. Scroll listener (>8px) with Lenis sync for background opacity & accurate Scroll-Spy
   useEffect(() => {
     const handleScroll = () => {
-      const y = window.__lenis ? window.__lenis.scroll : window.scrollY;
-      setScrolled(y > 8);
+      const scrollY = window.__lenis ? window.__lenis.scroll : window.scrollY;
+      setScrolled(scrollY > 8);
+
+      // If user just clicked a nav link, don't override the active section during smooth scroll
+      if (isClickScrolling.current) return;
+
+      // If at top / hero section (< 200px), no menu item is underlined
+      if (scrollY < 200) {
+        setActiveSection('');
+        return;
+      }
+
+      // Check if user has scrolled near bottom of page -> activate contact
+      if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 60) {
+        setActiveSection('contact');
+        return;
+      }
+
+      // Calculate active section based on navbar line position (~100px from top)
+      const navBuffer = 100;
+      let found = '';
+
+      for (const sec of SECTIONS) {
+        const el = document.getElementById(sec.id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= navBuffer && rect.bottom > navBuffer) {
+          found = sec.id;
+          break;
+        }
+      }
+
+      if (found) {
+        setActiveSection(found);
+      }
     };
+
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
 
@@ -47,6 +83,7 @@ export default function Navbar() {
 
     return () => {
       if (lenisTimer) clearInterval(lenisTimer);
+      if (clickTimer.current) clearTimeout(clickTimer.current);
       window.removeEventListener('scroll', handleScroll);
       if (boundLenis) {
         boundLenis.off('scroll', handleScroll);
@@ -70,30 +107,6 @@ export default function Navbar() {
     );
 
     observer.observe(heroBtn);
-    return () => observer.disconnect();
-  }, []);
-
-  // 3. Scroll-Spy observer for active menu item
-  useEffect(() => {
-    const sectionElements = SECTIONS.map((sec) => document.getElementById(sec.id)).filter(Boolean);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Find visible entries
-        const visibleEntries = entries.filter((e) => e.isIntersecting);
-        if (visibleEntries.length > 0) {
-          // Sort by highest intersection ratio or top bounding
-          visibleEntries.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-          setActiveSection(visibleEntries[0].target.id);
-        }
-      },
-      {
-        rootMargin: '-80px 0px -40% 0px',
-        threshold: [0, 0.2, 0.5, 0.8],
-      }
-    );
-
-    sectionElements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
@@ -132,11 +145,36 @@ export default function Navbar() {
     e.preventDefault();
     setMobileMenuOpen(false);
     const targetId = href.replace('#', '');
+
+    if (targetId === 'home') {
+      setActiveSection('');
+      isClickScrolling.current = true;
+      if (clickTimer.current) clearTimeout(clickTimer.current);
+      clickTimer.current = setTimeout(() => {
+        isClickScrolling.current = false;
+      }, 1100);
+
+      if (window.__lenis) {
+        window.__lenis.scrollTo(0, { duration: 1.0 });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+
     const el = document.getElementById(targetId);
     if (!el) return;
 
+    setActiveSection(targetId);
+    isClickScrolling.current = true;
+    if (clickTimer.current) clearTimeout(clickTimer.current);
+    clickTimer.current = setTimeout(() => {
+      isClickScrolling.current = false;
+    }, 1100);
+
     if (window.__lenis) {
-      window.__lenis.scrollTo(el, { offset: -80, duration: 1.0 });
+      // scroll-margin-top: 80px is already in CSS, so offset: 0 stops perfectly 80px above content
+      window.__lenis.scrollTo(el, { offset: 0, duration: 1.0 });
     } else {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       el.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
@@ -238,7 +276,8 @@ export default function Navbar() {
           >
             <a
               href={portfolioData.personal.cvPath}
-              download="CV_Aldy_Oktaviano.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center h-9 px-4 rounded-[10px] bg-transparent border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--surface-2)] text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2"
             >
               {cvText}
@@ -327,7 +366,8 @@ export default function Navbar() {
             <div className="pt-3 pb-2">
               <a
                 href={portfolioData.personal.cvPath}
-                download="CV_Aldy_Oktaviano.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full h-11 rounded-[10px] bg-transparent border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--surface-2)] font-semibold text-sm flex items-center justify-center transition-colors"
               >

@@ -10,7 +10,7 @@ export function DotGridHero({
   location = "Surakarta, Jawa Tengah",
   role = "Quality Assurance & Frontend Developer",
   summary = "Menyusun test case, memastikan bug tertangani sampai tuntas, dan mendampingi user saat UAT. Latar belakang di pengembangan aplikasi memudahkan diskusi dengan developer.",
-  cvUrl = "/CV_Aldy_Oktaviano.pdf",
+  cvUrl = "https://drive.google.com/file/d/1Ez6NzttGfwHsggKy0apQlq2_679Qrntf/view?usp=sharing",
   downloadText = "Unduh Curriculum Vitae (PDF)",
   dotGap = 48,
   interactionRadius = 140,
@@ -280,7 +280,8 @@ export function DotGridHero({
           <a
             id="hero-cv-btn"
             href={cvUrl}
-            download="CV_Aldy_Oktaviano.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] px-8 py-3.5 text-sm font-semibold text-white transition-colors shadow-sm"
           >
             <Download className="w-4 h-4 text-white" />
