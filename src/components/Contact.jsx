@@ -15,24 +15,47 @@ export default function Contact() {
   const whatsappUrl = `https://wa.me/${personal.whatsapp.replace('+', '')}?text=${encodeURIComponent(whatsappMessage)}`;
 
   const linkedInCard = (
-    <div className="w-72 overflow-hidden text-left">
-      <div className="h-16 bg-gradient-to-br from-[#0A66C2] via-[#0077B5] to-[#0A66C2]/40 relative" />
-      <div className="flex flex-col gap-1 px-4 pt-2 pb-4 bg-[var(--surface)]">
-        <div className="-mt-11 mb-1 w-fit">
-          <div className="size-14 rounded-full bg-gradient-to-br from-[#96551f] to-[#5b6270] flex items-center justify-center text-white font-bold text-lg ring-4 ring-[var(--surface)] shadow-md">
-            AO
+    <div className="w-80 overflow-hidden text-left bg-[#1d2226] text-[#e8e6e3] rounded-2xl border border-[rgba(255,255,255,0.12)] shadow-2xl">
+      {/* LinkedIn Dark Cover Banner */}
+      <div className="h-16 bg-gradient-to-r from-[#4b5563] via-[#374151] to-[#1f2937] relative" />
+
+      <div className="px-5 pt-2 pb-4">
+        {/* Real Avatar with #OPENTOWORK green ring */}
+        <div className="-mt-12 mb-2 w-fit relative">
+          <img
+            src="/linkedin-avatar.png"
+            alt={personal.name}
+            className="w-16 h-16 rounded-full object-cover ring-4 ring-[#1d2226] shadow-md"
+          />
+        </div>
+
+        {/* Name & Pronouns */}
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className="font-bold text-base text-white tracking-tight">{personal.name}</span>
+          <span className="text-xs text-[#9ca3af] font-normal">He/Him</span>
+        </div>
+
+        {/* Real Headline from Profile */}
+        <p className="text-xs text-[#d1d5db] font-medium leading-relaxed mt-1">
+          Software Tester | Manual Testing | Regression Testing
+        </p>
+
+        {/* Company & Details */}
+        <div className="mt-2.5 pt-2 border-t border-[rgba(255,255,255,0.08)] flex flex-col gap-1 text-[11px] text-[#9ca3af]">
+          <div className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
+            <span className="text-[#e5e7eb] font-medium">PT. Tiga Serangkai Inti Corpora</span>
+          </div>
+          <div className="flex items-center justify-between text-[#9ca3af] pt-0.5">
+            <span>Surakarta, Jawa Tengah</span>
+            <span className="text-[#60a5fa] font-medium">286+ koneksi</span>
           </div>
         </div>
-        <span className="font-semibold text-base text-[var(--text)]">{personal.name}</span>
-        <span className="text-xs text-[var(--text-muted)] font-medium leading-relaxed">
-          Quality Assurance Tester & Frontend Developer
-        </span>
-        <span className="text-xs text-[var(--text-muted)] mt-0.5">
-          Surakarta, Jawa Tengah, Indonesia
-        </span>
-        <div className="mt-2.5 pt-2 border-t border-[var(--border)] flex items-center justify-between text-xs font-semibold text-[#0A66C2]">
+
+        {/* Action Link */}
+        <div className="mt-3 pt-2.5 border-t border-[rgba(255,255,255,0.1)] flex items-center justify-between text-xs font-semibold text-[#70b5f9] hover:underline">
           <span>{lang === 'en' ? 'Open LinkedIn Profile' : 'Buka Profil LinkedIn'}</span>
-          <ArrowUpRight className="size-3.5" />
+          <ArrowUpRight className="w-3.5 h-3.5 text-[#70b5f9]" />
         </div>
       </div>
     </div>
