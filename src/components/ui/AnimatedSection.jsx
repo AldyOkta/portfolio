@@ -48,7 +48,7 @@ export default function AnimatedSection({
   return (
     <Component
       {...preset}
-      viewport={{ once: true, margin: '100px' }}
+      viewport={{ once: true, amount: 0.15, margin: '0px 0px -40px 0px' }}
       transition={{
         duration,
         delay,

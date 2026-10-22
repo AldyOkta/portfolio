@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { motion, useScroll, useSpring, useReducedMotion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data/portfolioData';
@@ -14,6 +15,14 @@ const SECTIONS = [
 
 export default function Navbar() {
   const { lang, setLang } = useLanguage();
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 25,
+    restDelta: 0.001,
+  });
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showNavbarCv, setShowNavbarCv] = useState(false);
@@ -376,6 +385,15 @@ export default function Navbar() {
             </div>
           </nav>
         </div>
+      )}
+
+      {/* Top Reading Progress Bar (Scroll-driven) */}
+      {!reduceMotion && (
+        <motion.div
+          style={{ scaleX, transformOrigin: '0%' }}
+          className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[var(--accent)] via-[var(--accent)] to-[#b46b2a] pointer-events-none z-50"
+          aria-hidden="true"
+        />
       )}
     </header>
   );
