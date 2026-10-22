@@ -54,6 +54,17 @@ export const portfolioData = {
       role: "Mobile Developer (Home, Search & Profile Module)"
     },
     {
+      id: "rodaku",
+      title: "Rodaku : Vehicle Service & Fuel Logbook",
+      category: "Mobile App",
+      badge: "Personal Project",
+      description: "Aplikasi buku catatan digital perawatan motor, mobil, dan pengisian BBM berarsitektur 100% offline-first. Dilengkapi pencatatan kilat (<30 detik), validasi odometer, pengingat servis dwi-faktor (kilometer atau tanggal), dan analitik pengeluaran berbasis SQLite lokal.",
+      tags: ["Personal Project", "React Native", "Expo SDK 57", "Expo Router", "SQLite (WAL)", "Offline-First", "Android"],
+      githubUrl: "https://github.com/AldyOkta/Rodaku",
+      featured: true,
+      role: "Mobile Developer"
+    },
+    {
       id: "hydroponic-iot",
       title: "Hydroponic Smart Automation System",
       category: "IoT & Automation",

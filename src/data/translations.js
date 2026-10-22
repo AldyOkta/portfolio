@@ -25,10 +25,12 @@ export const translations = {
     },
     projects: {
       title: "Karya & Bukti Nyata",
-      subtitle: "Aplikasi terverifikasi yang telah dirilis dan digunakan: mulai dari web app kolaborasi tim di Netlify, sistem AI korporasi, hingga otomatisasi perangkat IoT.",
-      countLabel: "4 Proyek",
+      subtitle: "Aplikasi terverifikasi yang telah dirilis dan digunakan: mulai dari web app kolaborasi tim di Netlify, sistem AI korporasi, aplikasi mobile offline-first, hingga otomatisasi perangkat IoT.",
+      countLabel: "5 Proyek",
       openDemo: "Buka Demo Netlify",
+      openGithub: "Lihat di GitHub",
       teamBadge: "Team Project • MSIB Hacktiv8",
+      personalBadge: "Personal Project",
       liveBadge: "Live on Netlify",
       aiBadge: "Enterprise AI Agent",
       mobileBadge: "Mobile App",
@@ -37,7 +39,8 @@ export const translations = {
       p1Role: "Peran: Frontend Developer & Git Workflow",
       p2Internal: "Internal Enterprise System",
       p3Role: "Peran: Modul Home, Search & Detail Hotel",
-      p4Predicate: "Predikat: Kompeten Badan Nasional Sertifikasi Profesi (BNSP)"
+      p4Predicate: "Predikat: Kompeten Badan Nasional Sertifikasi Profesi (BNSP)",
+      rodakuRole: "Peran: Mobile Developer"
     },
     skills: {
       title: "Keahlian & Perangkat Kerja",
@@ -102,10 +105,12 @@ export const translations = {
     },
     projects: {
       title: "Featured Works & Real Proof",
-      subtitle: "Verified production applications: ranging from collaborative team web apps on Netlify, enterprise AI agents, to embedded IoT automation.",
-      countLabel: "4 Project",
+      subtitle: "Verified production applications: ranging from collaborative team web apps on Netlify, enterprise AI agents, offline-first mobile apps, to embedded IoT automation.",
+      countLabel: "5 Projects",
       openDemo: "Open Netlify Demo",
+      openGithub: "View on GitHub",
       teamBadge: "Team Project • MSIB Hacktiv8",
+      personalBadge: "Personal Project",
       liveBadge: "Live on Netlify",
       aiBadge: "Enterprise AI Agent",
       mobileBadge: "Mobile App",
@@ -114,7 +119,8 @@ export const translations = {
       p1Role: "Role: Frontend Developer & Git Workflow",
       p2Internal: "Internal Enterprise System",
       p3Role: "Role: Home, Search & Hotel Details Module",
-      p4Predicate: "Status: Certified Competent by National Professional Certification Board (BNSP)"
+      p4Predicate: "Status: Certified Competent by National Professional Certification Board (BNSP)",
+      rodakuRole: "Role: Mobile Developer"
     },
     skills: {
       title: "Core Skills & Toolkit",
