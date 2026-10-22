@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import SmoothScroll from './components/ui/SmoothScroll';
-import CustomCursor from './components/ui/CustomCursor';
 import WeightSweepPreloader from './components/ui/weight-sweep-preloader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -21,7 +20,6 @@ export default function App() {
     <LanguageProvider>
       <SmoothScroll>
         <WeightSweepPreloader onComplete={handlePreloaderComplete} />
-        <CustomCursor />
         <div className="min-h-svh bg-[var(--bg)] text-[var(--text)] font-sans">
           <Navbar />
           <main id="main-content">

@@ -64,6 +64,7 @@ export const translations = {
       copyEmail: "Salin email",
       emailCopied: "Email disalin!",
       contributions: "kontribusi setahun terakhir",
+      copy: "Salin",
       copied: "Tersalin",
       chatWa: "Chat WhatsApp",
       sendEmail: "Kirim Email",
