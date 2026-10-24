@@ -51,6 +51,7 @@ export const translations = {
       feSub: "Web & Cross-Platform Apps",
       toolsTitle: "Tools & Ekosistem",
       toolsSub: "Workflow & Kolaborasi",
+      platform: "Sistem & Lingkungan: Linux (Ubuntu), Windows, Git, Postman, OpenProject, Docker",
     },
     experience: {
       title: "Riwayat Karier",
@@ -67,6 +68,8 @@ export const translations = {
       copyEmail: "Salin email",
       emailCopied: "Email disalin!",
       contributions: "kontribusi setahun terakhir",
+      githubLoading: "Memuat kontribusi…",
+      githubError: "Gagal memuat kontribusi",
       copy: "Salin",
       copied: "Tersalin",
       chatWa: "Chat WhatsApp",
@@ -131,6 +134,7 @@ export const translations = {
       feSub: "Web & Cross-Platform Apps",
       toolsTitle: "Tools & Ecosystem",
       toolsSub: "Workflow & Collaboration",
+      platform: "Systems & Environments: Linux (Ubuntu), Windows, Git, Postman, OpenProject, Docker",
     },
     experience: {
       title: "Professional Experience",
@@ -147,6 +151,8 @@ export const translations = {
       copyEmail: "Copy my email",
       emailCopied: "Email copied!",
       contributions: "contributions in the last year",
+      githubLoading: "Loading contributions…",
+      githubError: "Could not load contributions",
       copy: "Copy",
       copied: "Copied",
       chatWa: "Chat on WhatsApp",

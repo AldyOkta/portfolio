@@ -22,7 +22,7 @@ export default function App() {
         <WeightSweepPreloader onComplete={handlePreloaderComplete} />
         <div className="min-h-svh bg-[var(--bg)] text-[var(--text)] font-sans">
           <Navbar />
-          <main id="main-content">
+          <main id="main-content" tabIndex={-1}>
             <Hero isLoaded={preloaderFinished} />
             <About />
             <Projects />

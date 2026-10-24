@@ -4,6 +4,8 @@ import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Download, MapPin } from "lucide-react";
 import { cn } from "../../lib/utils";
+import TextMaskReveal from "./text-mask-reveal";
+import ShimmerButton from "./shimmer-button";
 
 export function DotGridHero({
   name = "Aldy Oktaviano",
@@ -234,23 +236,27 @@ export function DotGridHero({
       />
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
-        <motion.h1
-          initial={reduceMotion ? false : { opacity: 0, y: 28 }}
-          animate={reduceMotion ? false : (isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 })}
-          transition={{ duration: 0.75, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-          className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[var(--text)] mb-4"
-        >
-          {name}
-        </motion.h1>
+        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[var(--text)] mb-4">
+          <TextMaskReveal
+            text={name}
+            trigger={isLoaded}
+            delay={0.05}
+            stagger={0.08}
+            duration={0.75}
+            as="span"
+          />
+        </h1>
 
-        <motion.p
-          initial={reduceMotion ? false : { opacity: 0, y: 22 }}
-          animate={reduceMotion ? false : (isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 22 })}
-          transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="text-xl sm:text-2xl font-semibold text-[var(--text-body)] mb-3"
-        >
-          {role}
-        </motion.p>
+        <p className="text-xl sm:text-2xl font-semibold text-[var(--text-body)] mb-3">
+          <TextMaskReveal
+            text={role}
+            trigger={isLoaded}
+            delay={0.2}
+            stagger={0.03}
+            duration={0.7}
+            as="span"
+          />
+        </p>
 
         <motion.p
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
@@ -277,16 +283,17 @@ export function DotGridHero({
           transition={{ duration: 0.65, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
           className="flex items-center justify-center"
         >
-          <a
+          <ShimmerButton
             id="hero-cv-btn"
+            as="a"
             href={cvUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 rounded-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] px-8 py-3.5 text-sm font-semibold text-white transition-colors shadow-sm"
+            innerClassName="px-8 py-3.5"
           >
             <Download className="w-4 h-4 text-white" />
             <span>{downloadText}</span>
-          </a>
+          </ShimmerButton>
         </motion.div>
       </div>
     </section>

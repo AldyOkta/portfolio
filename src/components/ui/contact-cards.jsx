@@ -1,6 +1,5 @@
 import React, { useState, useRef, useMemo, useLayoutEffect, useEffect } from 'react';
-
-const GITHUB_API_URL = 'https://github-contributions-api.jogruber.de/v4';
+import { loadGithubContributions, parseContributionDays } from '../../lib/github';
 
 const contributionLevelClasses = [
   'bg-zinc-200/80 dark:bg-zinc-800',
@@ -195,27 +194,42 @@ export function ContributionGraph({ days = [], locale = 'id-ID', className = '' 
   );
 }
 
-export function GithubCard({ github, locale = 'id-ID', contributionsLabel = 'kontribusi setahun terakhir' }) {
-  const [fetchedDays, setFetchedDays] = useState(null);
+export function GithubCard({
+  github,
+  locale = 'id-ID',
+  contributionsLabel = 'kontribusi setahun terakhir',
+  loadingLabel = 'Memuat kontribusi…',
+  errorLabel = 'Gagal memuat kontribusi',
+}) {
+  const [result, setResult] = useState(null);
 
   useEffect(() => {
-    if (github.days) return;
-    let active = true;
-    fetch(`${GITHUB_API_URL}/${github.username}?y=last`)
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .then((data) => {
-        if (active) setFetchedDays(data.contributions);
+    if (github.days !== undefined) return;
+    const controller = new AbortController();
+    setResult(null);
+    loadGithubContributions(github.username, controller.signal)
+      .then((days) => {
+        if (!controller.signal.aborted) setResult({ username: github.username, days });
       })
       .catch(() => {
-        if (active) setFetchedDays([]);
+        if (!controller.signal.aborted) setResult({ username: github.username, error: true });
       });
-    return () => {
-      active = false;
-    };
+    return () => controller.abort();
   }, [github.days, github.username]);
 
-  const days = github.days ?? fetchedDays ?? [];
-  const totalCount = days.reduce((acc, curr) => acc + (curr?.count || 0), 0);
+  const currentResult = result?.username === github.username ? result : null;
+  let days = currentResult?.days;
+  let failed = currentResult?.error ?? false;
+  if (github.days !== undefined) {
+    try {
+      days = parseContributionDays(github.days);
+      failed = false;
+    } catch {
+      days = undefined;
+      failed = true;
+    }
+  }
+  const totalCount = days?.reduce((acc, day) => acc + day.count, 0);
 
   return (
     <div className="flex w-[min(23rem,calc(100vw-3rem))] flex-col gap-3 p-4 text-left">
@@ -225,19 +239,17 @@ export function GithubCard({ github, locale = 'id-ID', contributionsLabel = 'kon
             src={`https://github.com/${github.username}.png`}
             alt={github.username}
             className="size-11 shrink-0 rounded-full border border-[var(--border)] object-cover bg-[var(--surface-2)]"
-            onError={(e) => {
-              e.currentTarget.src = 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png';
-            }}
+            onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }}
           />
         )}
         <div className="flex flex-col leading-tight">
           <span className="font-semibold text-sm text-[var(--text)]">@{github.username}</span>
-          <span className="text-xs text-[var(--text-muted)] mt-0.5">
-            {totalCount.toLocaleString(locale)} {contributionsLabel}
+          <span role="status" className="text-xs text-[var(--text-muted)] mt-0.5">
+            {failed ? errorLabel : days === undefined ? loadingLabel : `${totalCount.toLocaleString(locale)} ${contributionsLabel}`}
           </span>
         </div>
       </div>
-      <ContributionGraph days={days} locale={locale} />
+      {days !== undefined && <ContributionGraph days={days} locale={locale} />}
     </div>
   );
 }
@@ -289,6 +301,8 @@ export default function ContactCards({
             github={github}
             locale={locale}
             contributionsLabel={labels?.contributions ?? 'kontribusi setahun terakhir'}
+            loadingLabel={labels?.loading}
+            errorLabel={labels?.error}
           />
         ),
       });
@@ -301,11 +315,15 @@ export default function ContactCards({
     const triggerEl = triggerRefs.current[activeIndex];
     if (!isOpen || !cardEl || !triggerEl) return;
 
-    setContainerPos({
+    const measure = () => setContainerPos({
       left: triggerEl.offsetLeft + triggerEl.offsetWidth / 2,
       width: cardEl.offsetWidth,
       height: cardEl.offsetHeight,
     });
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(cardEl);
+    return () => observer.disconnect();
   }, [isOpen, activeIndex, allCards]);
 
   useEffect(() => {

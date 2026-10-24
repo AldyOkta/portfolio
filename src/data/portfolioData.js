@@ -20,69 +20,100 @@ export const portfolioData = {
     { label: "IPK Kelulusan S1", value: "3.63 / 4.00" },
     { label: "Sertifikasi Kompetensi", value: "4 Sertifikat" }
   ],
-
   projects: [
     {
       id: "movie-discovery",
       title: "Movie Search & Discovery Web App",
       category: "Frontend Web",
       badge: "Team Project (MSIB Hacktiv8)",
-      description: "Aplikasi Single Page Application (SPA) eksplorasi film interaktif menggunakan React.js, Tailwind CSS, Axios, dan OMDb API. Menghadirkan fitur pencarian real-time, filtering kategori film/serial, pagination, dan responsivitas penuh.",
-      tags: ["React.js", "Tailwind CSS", "Axios", "OMDb API", "Netlify"],
-      liveUrl: "https://chic-sawine-f22630.netlify.app",
-      featured: true,
-      role: "Frontend Developer (Kolaborasi Tim & Integrasi API)"
+      description: {
+        en: "Interactive movie search Single Page Application built collaboratively during the MSIB Hacktiv8 program. Features instant search, category filtering, and responsive UI with React.js, Tailwind CSS, Axios, and live OMDb API.",
+        id: "Single Page Application pencarian film yang saya kembangkan bersama tim di program MSIB Hacktiv8. Menggunakan React.js, Tailwind CSS, Axios, dan integrasi live OMDb API dengan pencarian instan dan responsivitas penuh."
+      },
+      tags: ["Team Project", "React.js", "Tailwind CSS", "Axios", "OMDb API", "Netlify"],
+      colSpan: "md:col-span-7",
+      borderAccent: true,
+      delay: 0,
+      roleKey: "p1Role",
+      action: {
+        type: "link",
+        href: "https://chic-sawine-f22630.netlify.app",
+        labelKey: "openDemo"
+      }
     },
     {
       id: "aksara-assistant",
-      title: "Aksara Assistant - AI Sales Data Agent",
+      title: "Aksara Assistant AI",
       category: "Fullstack & AI Integration",
       badge: "PT Tiga Serangkai Inti Corpora Internal Project",
-      description: "Asisten cerdas berbasis web chat UI interaktif terintegrasi Socket.io dan n8n AI Agent. Membantu tim sales merekapitulasi, memvalidasi, dan mengkueri data kunjungan lapangan secara otomatis.",
-      tags: ["React.js", "Socket.io", "n8n AI Agent", "Tailwind CSS", "REST API"],
-      featured: true,
-      role: "QA Tester & Frontend Support"
+      description: {
+        en: "Intelligent enterprise AI assistant featuring an interactive web chat connected to n8n AI Agents and Socket.io at PT Tiga Serangkai Inti Corpora. Helps sales teams validate, aggregate, and query field visit data automatically.",
+        id: "Asisten AI cerdas berbasis antarmuka web chat terhubung ke n8n AI Agent dan Socket.io di PT Tiga Serangkai Inti Corpora. Digunakan tim sales lapangan untuk validasi, rekapitulasi, dan pelaporan data kunjungan secara otomatis."
+      },
+      tags: ["Enterprise AI", "React.js", "Socket.io", "n8n AI", "REST API"],
+      colSpan: "md:col-span-5",
+      borderAccent: false,
+      delay: 0.08,
+      action: {
+        type: "internal",
+        labelKey: "p2Internal"
+      }
     },
     {
       id: "hotel-booking",
-      title: "Hotel Booking Mobile Application",
+      title: "Hotel Booking Mobile",
       category: "Mobile App",
       badge: "Team Project (Hacktiv8 Batch 5)",
-      description: "Aplikasi pemesanan hotel berbasis React Native cross-platform dengan antarmuka dinamis, sistem bookmark favorit, pencarian akomodasi cepat, serta detail informasi fasilitas hotel.",
-      tags: ["React Native", "Expo", "JavaScript", "Context API"],
-      featured: true,
-      role: "Mobile Developer (Home, Search & Profile Module)"
+      description: {
+        en: "Cross-platform mobile hotel booking app built with React Native and Expo (Hacktiv8 Batch 5). Includes dynamic search, price range filtering, bookmarking, and user profile management.",
+        id: "Aplikasi reservasi hotel mobile multiplatform berbasis React Native dan Expo (Hacktiv8 Batch 5). Memiliki fitur pencarian akomodasi, filter rentang harga, bookmark hotel favorit, dan halaman akun pengguna."
+      },
+      tags: ["Mobile App", "React Native", "Expo", "Context API", "JavaScript"],
+      colSpan: "md:col-span-5",
+      borderAccent: false,
+      delay: 0.12,
+      action: {
+        type: "roleOnly",
+        labelKey: "p3Role"
+      }
     },
     {
       id: "rodaku",
-      title: "Rodaku : Vehicle Service & Fuel Logbook",
+      title: "Rodaku : Vehicle Service Logbook",
       category: "Mobile App",
       badge: "Personal Project",
-      description: "Aplikasi buku catatan digital perawatan motor, mobil, dan pengisian BBM berarsitektur 100% offline-first. Dilengkapi pencatatan kilat (<30 detik), validasi odometer, pengingat servis dwi-faktor (kilometer atau tanggal), dan analitik pengeluaran berbasis SQLite lokal.",
+      description: {
+        en: "100% offline-first personal mobile logbook for tracking vehicle maintenance, fuel fill-ups, and dual-trigger service reminders (mileage or date). Built with React Native, Expo Router, and local SQLite with WAL mode.",
+        id: "Aplikasi buku catatan (logbook) digital perawatan motor, mobil, dan pengisian BBM berarsitektur 100% offline-first. Dilengkapi pencatatan kilat (<30 detik), validasi odometer, pengingat servis dwi-faktor (kilometer atau tanggal), dan analitik pengeluaran berbasis SQLite lokal."
+      },
       tags: ["Personal Project", "React Native", "Expo SDK 57", "Expo Router", "SQLite (WAL)", "Offline-First", "Android"],
-      githubUrl: "https://github.com/AldyOkta/Rodaku",
-      featured: true,
-      role: "Mobile Developer"
+      colSpan: "md:col-span-7",
+      borderAccent: false,
+      delay: 0.16,
+      roleKey: "rodakuRole",
+      action: {
+        type: "github",
+        href: "https://github.com/AldyOkta/Rodaku",
+        labelKey: "openGithub"
+      }
     },
     {
       id: "hydroponic-iot",
       title: "Hydroponic Smart Automation System",
       category: "IoT & Automation",
       badge: "Project-Based Learning BPVP",
-      description: "Sistem otomatisasi nutrisi dan pemantauan kondisi tanaman hidroponik berbasis mikrokontroler dengan sertifikasi BNSP resmi. Mengontrol kadar pH, TDS, dan siklus pompa secara otomatis.",
-      tags: ["Microcontroller", "IoT Sensors", "Automation", "Embedded C++"],
-      featured: false,
-      role: "IoT System Developer & QA Verifier"
-    },
-    {
-      id: "asset-management",
-      title: "Asset Management Mobile System",
-      category: "Mobile App",
-      badge: "PT Tiga Serangkai Pustaka Mandiri",
-      description: "Aplikasi pelacakan dan pencatatan aset inventaris perusahaan internal dengan optimasi performa loading data dan sinkronisasi database lokal/remote.",
-      tags: ["React Native", "Expo", "SQLite", "REST API"],
-      featured: false,
-      role: "Mobile Developer Intern"
+      description: {
+        en: "Microcontroller-based smart automation system controlling nutrition dosing, realtime pH/TDS sensor telemetry, and water pump cycles for hydroponic agriculture at BPVP Surakarta. Officially verified competent by BNSP.",
+        id: "Sistem kendali otomatis berbasis mikrokontroler untuk mengatur kadar nutrisi, pembacaan sensor pH/TDS secara realtime, dan siklus pompa air tanaman hidroponik di BPVP Surakarta. Dinyatakan Kompeten oleh BNSP."
+      },
+      tags: ["IoT & Hardware", "Microcontroller", "Sensor TDS & pH", "Embedded C++", "Sertifikasi BNSP"],
+      colSpan: "md:col-span-12",
+      borderAccent: true,
+      delay: 0.2,
+      action: {
+        type: "badge",
+        labelKey: "p4Predicate"
+      }
     }
   ],
 

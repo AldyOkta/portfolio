@@ -19,7 +19,7 @@ export default function Footer() {
       window.__lenis.scrollTo(0, { duration: 1.0 });
     } else {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'instant' : 'smooth' });
     }
   };
 
@@ -28,12 +28,14 @@ export default function Footer() {
     const targetId = href.replace('#', '');
     const el = document.getElementById(targetId);
     if (!el) return;
+    el.setAttribute('tabindex', '-1');
+    el.focus({ preventScroll: true });
 
     if (window.__lenis) {
       window.__lenis.scrollTo(el, { offset: 0, duration: 1.0 });
     } else {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      el.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      el.scrollIntoView({ behavior: prefersReducedMotion ? 'instant' : 'smooth' });
     }
   };
 

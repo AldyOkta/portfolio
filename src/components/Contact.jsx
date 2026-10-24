@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data/portfolioData';
 import ContactCards, { LinkedinIcon } from './ui/contact-cards';
+import ShimmerButton from './ui/shimmer-button';
 
 export default function Contact() {
   const { personal } = portfolioData;
@@ -94,21 +95,25 @@ export default function Contact() {
               copy: t.contact.copyEmail,
               copied: t.contact.emailCopied,
               contributions: t.contact.contributions,
+              loading: t.contact.githubLoading,
+              error: t.contact.githubError,
             }}
             locale={lang === 'en' ? 'en-US' : 'id-ID'}
           />
 
           {/* Direct WhatsApp CTA Button */}
           <div className="mt-2 flex items-center justify-center">
-            <a
+            <ShimmerButton
+              as="a"
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-11 px-6 rounded-xl bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-semibold text-sm inline-flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95"
+              className="rounded-xl shadow-sm"
+              innerClassName="h-11 px-6 rounded-xl"
             >
               <span>{t.contact.chatWa}</span>
               <ArrowUpRight className="w-4 h-4 text-white" />
-            </a>
+            </ShimmerButton>
           </div>
         </div>
 

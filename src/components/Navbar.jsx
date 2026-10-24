@@ -119,13 +119,13 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  // 4. Mobile menu scroll lock & keyboard Escape listener
+  // The mobile navigation is a disclosure: allow scrolling and close when focus leaves.
   useEffect(() => {
     if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
       const handleKeyDown = (e) => {
         if (e.key === 'Escape') {
           setMobileMenuOpen(false);
+          document.getElementById('mobile-menu-toggle-btn')?.focus();
         }
       };
       const handleClickOutside = (e) => {
@@ -137,15 +137,18 @@ export default function Navbar() {
         }
       };
 
-      document.addEventListener('keydown', handleKeyDown);
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.body.style.overflow = '';
-        document.removeEventListener('keydown', handleKeyDown);
-        document.removeEventListener('mousedown', handleClickOutside);
+      const desktop = window.matchMedia('(min-width: 768px)');
+      const handleResize = () => {
+        if (desktop.matches) setMobileMenuOpen(false);
       };
-    } else {
-      document.body.style.overflow = '';
+      desktop.addEventListener('change', handleResize);
+      document.addEventListener('keydown', handleKeyDown);
+      document.addEventListener('pointerdown', handleClickOutside);
+      return () => {
+        desktop.removeEventListener('change', handleResize);
+        document.removeEventListener('keydown', handleKeyDown);
+        document.removeEventListener('pointerdown', handleClickOutside);
+      };
     }
   }, [mobileMenuOpen]);
 
@@ -154,6 +157,12 @@ export default function Navbar() {
     e.preventDefault();
     setMobileMenuOpen(false);
     const targetId = href.replace('#', '');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    }
 
     if (targetId === 'home') {
       setActiveSection('');
@@ -166,7 +175,7 @@ export default function Navbar() {
       if (window.__lenis) {
         window.__lenis.scrollTo(0, { duration: 1.0 });
       } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'instant' : 'smooth' });
       }
       return;
     }
@@ -185,8 +194,7 @@ export default function Navbar() {
       // scroll-margin-top: 80px is already in CSS, so offset: 0 stops perfectly 80px above content
       window.__lenis.scrollTo(el, { offset: 0, duration: 1.0 });
     } else {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      el.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      el.scrollIntoView({ behavior: prefersReducedMotion ? 'instant' : 'smooth' });
     }
   }, []);
 
@@ -196,6 +204,9 @@ export default function Navbar() {
 
   return (
     <header
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) setMobileMenuOpen(false);
+      }}
       className={`sticky top-0 z-50 w-full transition-all duration-200 backdrop-blur-md ${
         isHeaderOpaque
           ? 'bg-[var(--header-bg)] border-b border-[var(--border)] shadow-[0_1px_3px_rgba(0,0,0,0.03)]'
@@ -280,7 +291,7 @@ export default function Navbar() {
           {/* Download CV CTA: Appears only after hero CV button scrolls out of view */}
           <div
             className={`transition-opacity duration-150 ${
-              showNavbarCv ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+              showNavbarCv ? 'visible opacity-100' : 'invisible opacity-0'
             }`}
           >
             <a
@@ -311,6 +322,7 @@ export default function Navbar() {
                 : 'Buka menu'
             }
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -320,8 +332,10 @@ export default function Navbar() {
       {/* Mobile Menu Panel: Full-width panel on --bg with 1px bottom border */}
       {mobileMenuOpen && (
         <div
+          id="mobile-menu"
           ref={mobilePanelRef}
-          className="md:hidden w-full bg-[var(--bg)] border-b border-[var(--border)] px-6 py-4 shadow-sm"
+          data-lenis-prevent
+          className="absolute top-full left-0 md:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto w-full bg-[var(--bg)] border-b border-[var(--border)] px-6 py-4 shadow-sm"
         >
           <nav aria-label="Mobile Main" className="flex flex-col">
             {SECTIONS.map((sec) => {
@@ -377,7 +391,10 @@ export default function Navbar() {
                 href={portfolioData.personal.cvPath}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  document.getElementById('mobile-menu-toggle-btn')?.focus();
+                }}
                 className="w-full h-11 rounded-[10px] bg-transparent border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--surface-2)] font-semibold text-sm flex items-center justify-center transition-colors"
               >
                 {cvText} (PDF)
