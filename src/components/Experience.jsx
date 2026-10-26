@@ -141,9 +141,16 @@ export default function Experience() {
               <AnimatedSection animation="fade-up" delay={idx * 0.08}>
                 <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] group-hover:border-[var(--border-strong)] transition-all group-hover:shadow-sm p-7 sm:p-9">
                   <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                    <div className="inline-flex items-center gap-2 text-sm font-medium text-[var(--text-muted)] bg-[var(--surface-2)] px-3.5 py-1 rounded-full">
-                      <Calendar className="w-4 h-4 text-[var(--text-muted)]" />
-                      <code>{exp.period}</code>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <div className="inline-flex items-center gap-2 text-sm font-medium text-[var(--text-muted)] bg-[var(--surface-2)] px-3.5 py-1 rounded-full">
+                        <Calendar className="w-4 h-4 text-[var(--text-muted)]" />
+                        <code>{exp.period}</code>
+                      </div>
+                      {isLatest && (
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[var(--accent-soft)] text-[var(--accent)]">
+                          {lang === 'en' ? 'Present' : 'Sekarang'}
+                        </span>
+                      )}
                     </div>
                     <span className={`inline-flex items-center gap-1.5 text-sm px-3 py-1 rounded-full ${getTypeChipClasses(exp.type)}`}>
                       <span className={`w-2 h-2 rounded-full ${exp.type === 'Full-time' ? 'bg-[var(--pass)]' : exp.type.includes('Training') || exp.type.includes('Pelatihan') ? 'bg-[var(--info)]' : 'bg-[var(--text-muted)]'}`} />

@@ -25,5 +25,14 @@ dist-ssr
 .gemini
 .taste-skill
 
-# Sensitive documents
+# Sensitive documents & secrets
 *.pdf
+argon.json
+mcp_config.json
+.env
+.env.*
+*.env
+!.env.example
+
+# Markdown docs and notes
+*.md

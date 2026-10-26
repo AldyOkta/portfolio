@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data/portfolioData';
+import { getEmail, getMailtoUrl, getWhatsAppUrl } from '../utils/contact';
 
 const NAV_LINKS = [
   { id: 'about', en: 'About', idLabel: 'Tentang' },
@@ -39,11 +40,34 @@ export default function Footer() {
     }
   };
 
+  const [displayEmail, setDisplayEmail] = useState('');
+
+  useEffect(() => {
+    setDisplayEmail(getEmail());
+  }, []);
+
   const whatsappMessage = lang === 'en'
     ? 'Hello Aldy Oktaviano, I came across your portfolio at aldyokta.my.id and would like to discuss an opportunity.'
     : 'Halo Aldy Oktaviano, saya melihat portofolio Anda di aldyokta.my.id dan tertarik untuk berdiskusi lebih lanjut.';
 
-  const whatsappUrl = `https://wa.me/${personal.whatsapp.replace('+', '')}?text=${encodeURIComponent(whatsappMessage)}`;
+  const handleEmailClick = (e) => {
+    e.preventDefault();
+    window.location.href = getMailtoUrl();
+  };
+
+  const handleEmailPrepare = (e) => {
+    e.currentTarget.href = getMailtoUrl();
+  };
+
+  const handleWhatsAppClick = (e) => {
+    e.preventDefault();
+    const url = getWhatsAppUrl(whatsappMessage);
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleWhatsAppPrepare = (e) => {
+    e.currentTarget.href = getWhatsAppUrl(whatsappMessage);
+  };
 
   return (
     <footer className="w-full bg-[var(--footer-bg)] py-14">
@@ -81,11 +105,16 @@ export default function Footer() {
 
           {/* Column 3: Contact (4 cols) */}
           <div className="md:col-span-4 flex flex-col space-y-2.5 text-sm">
+            {/* Obfuscated Email Link */}
             <a
-              href={`mailto:${personal.email}`}
-              className="text-[var(--footer-text)] hover:underline break-all transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
+              href="#email"
+              onClick={handleEmailClick}
+              onMouseEnter={handleEmailPrepare}
+              onFocus={handleEmailPrepare}
+              aria-label="Send email"
+              className="text-[var(--footer-text)] hover:underline break-all transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded cursor-pointer"
             >
-              {personal.email}
+              {displayEmail || 'oktavianoaldy777 [at] gmail [dot] com'}
             </a>
 
             <a
@@ -106,12 +135,16 @@ export default function Footer() {
               GitHub
             </a>
 
-            {/* SATU elemen utama dengan var(--accent-on-dark) sesuai saran.md */}
+            {/* SATU elemen utama dengan var(--accent-on-dark) sesuai saran.md (Obfuscated WhatsApp Link) */}
             <a
-              href={whatsappUrl}
+              href="#whatsapp"
+              onClick={handleWhatsAppClick}
+              onMouseEnter={handleWhatsAppPrepare}
+              onFocus={handleWhatsAppPrepare}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--accent-on-dark)] hover:underline font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-on-dark)] rounded"
+              aria-label="Chat on WhatsApp"
+              className="text-[var(--accent-on-dark)] hover:underline font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-on-dark)] rounded cursor-pointer"
             >
               WhatsApp
             </a>

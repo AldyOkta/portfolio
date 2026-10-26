@@ -66,7 +66,8 @@ export function CopyEmailButton({ email, labels, className = '' }) {
   }, []);
 
   async function handleCopy() {
-    const success = await copyToClipboard(email);
+    const rawEmail = typeof email === 'function' ? email() : email;
+    const success = await copyToClipboard(rawEmail);
     setStatus(success ? 'copied' : 'manual');
     clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => setStatus('idle'), success ? 2500 : 6000);
@@ -89,7 +90,7 @@ export function CopyEmailButton({ email, labels, className = '' }) {
         aria-live="polite"
         className={`absolute inset-0 flex items-center justify-center transition-all duration-300 font-semibold text-[var(--pass)] ${status === 'idle' ? 'opacity-0 scale-95 blur-[2px] pointer-events-none' : 'opacity-100 scale-100'}`}
       >
-        {status === 'manual' ? email : copiedLabel}
+        {status === 'manual' ? (typeof email === 'function' ? email() : email) : copiedLabel}
       </span>
     </button>
   );

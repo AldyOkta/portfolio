@@ -1,3 +1,5 @@
+import { getEmail, getWhatsApp, getWhatsAppDisplay } from '../utils/contact';
+
 export const portfolioData = {
   personal: {
     name: "Aldy Oktaviano",
@@ -5,9 +7,15 @@ export const portfolioData = {
     status: "Open for Opportunities",
     summary: "Lulusan S1 Teknik Informatika (IPK 3,63/4,00) dengan pengalaman sebagai Quality Assurance Tester (program magang) pada aplikasi desktop enterprise serta pengembangan aplikasi mobile menggunakan React Native dan Expo. Terbiasa mengelola siklus pengujian end-to-end, mulai dari analisis kebutuhan, penyusunan test case, pelaporan dan retest defect, hingga pendampingan UAT. Memiliki latar belakang pengembangan aplikasi (UI, koneksi database, optimisasi performa) yang memperkuat pemahaman terhadap SDLC dan standar kualitas kode. Memiliki pengalaman membangun antarmuka chatbot AI yang terintegrasi dengan workflow n8n. Teliti, adaptif, dan siap berkontribusi dalam tim pengembangan software.",
     location: "Surakarta, Jawa Tengah, Indonesia",
-    email: "oktavianoaldy777@gmail.com",
-    whatsapp: "+6289601579321",
-    whatsappDisplay: "+62 896-0157-9321",
+    get email() {
+      return getEmail();
+    },
+    get whatsapp() {
+      return getWhatsApp();
+    },
+    get whatsappDisplay() {
+      return getWhatsAppDisplay();
+    },
     linkedin: "https://www.linkedin.com/in/aldy-oktaviano-548174280",
     github: "https://github.com/AldyOkta",
     cvPath: "https://drive.google.com/file/d/1Ez6NzttGfwHsggKy0apQlq2_679Qrntf/view?usp=sharing",
@@ -151,6 +159,7 @@ export const portfolioData = {
       company: "PT Tiga Serangkai Inti Corpora",
       period: "Desember 2025 - Sekarang",
       type: "Full-time",
+      current: true,
       responsibilities: [
         "Melakukan functional testing, regression testing, dan UAT support untuk sistem enterprise internal.",
         "Menulis dokumentasi test plan, skenario pengujian, dan logging bug terstruktur di OpenProject.",
@@ -206,7 +215,7 @@ export const portfolioData = {
     {
       title: "Padepokan QA Certified Tester",
       issuer: "Padepokan QA Testing Academy",
-      year: "2024"
+      year: "2026"
     },
     {
       title: "Certified Front-End Web Developer",

@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data/portfolioData';
+import { getWhatsAppUrl } from '../utils/contact';
 import ContactCards, { LinkedinIcon } from './ui/contact-cards';
 import ShimmerButton from './ui/shimmer-button';
 
@@ -13,7 +14,15 @@ export default function Contact() {
     ? 'Hello Aldy Oktaviano, I came across your portfolio at aldyokta.my.id and would like to discuss an opportunity.'
     : 'Halo Aldy Oktaviano, saya melihat portofolio Anda di aldyokta.my.id dan tertarik untuk berdiskusi lebih lanjut.';
 
-  const whatsappUrl = `https://wa.me/${personal.whatsapp.replace('+', '')}?text=${encodeURIComponent(whatsappMessage)}`;
+  const handleWhatsAppClick = (e) => {
+    e.preventDefault();
+    const url = getWhatsAppUrl(whatsappMessage);
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleWhatsAppPrepare = (e) => {
+    e.currentTarget.href = getWhatsAppUrl(whatsappMessage);
+  };
 
   const linkedInCard = (
     <div className="w-80 overflow-hidden text-left bg-[#1d2226] text-[#e8e6e3] rounded-2xl border border-[rgba(255,255,255,0.12)] shadow-2xl">
@@ -101,15 +110,19 @@ export default function Contact() {
             locale={lang === 'en' ? 'en-US' : 'id-ID'}
           />
 
-          {/* Direct WhatsApp CTA Button */}
+          {/* Direct WhatsApp CTA Button (Obfuscated & dynamically generated on user interaction) */}
           <div className="mt-2 flex items-center justify-center">
             <ShimmerButton
               as="a"
-              href={whatsappUrl}
+              href="#whatsapp"
+              onClick={handleWhatsAppClick}
+              onMouseEnter={handleWhatsAppPrepare}
+              onFocus={handleWhatsAppPrepare}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={t.contact.chatWa}
               className="rounded-xl shadow-sm"
-              innerClassName="h-11 px-6 rounded-xl"
+              innerClassName="h-11 px-6 rounded-xl font-semibold text-sm"
             >
               <span>{t.contact.chatWa}</span>
               <ArrowUpRight className="w-4 h-4 text-white" />
