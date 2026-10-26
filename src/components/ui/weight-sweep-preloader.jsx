@@ -4,7 +4,7 @@ import { BlurText } from './blur-text';
 
 export default function WeightSweepPreloader({
   onComplete,
-  duration = 0.6,
+  duration = 1.6,
   name = "Aldy Oktaviano",
   role = "Quality Assurance & Frontend Developer",
 }) {
@@ -39,17 +39,17 @@ export default function WeightSweepPreloader({
       if (rawProgress < 1) {
         requestAnimationFrame(frame);
       } else {
-        // Step 1: Counter reaches 100%, trigger ink panel
-        timer1 = setTimeout(() => setStage('ink-rise'), 50);
+        // Step 1: Counter mencapai 100%, beri jeda sejenak agar terbaca, lalu naikkan ink panel
+        timer1 = setTimeout(() => setStage('ink-rise'), 200);
 
-        // Step 2: Unmount counter screen once ink covers it
-        timer2 = setTimeout(() => setShowCounterScreen(false), 200);
+        // Step 2: Unmount counter screen saat ink panel sudah menutup penuh
+        timer2 = setTimeout(() => setShowCounterScreen(false), 500);
 
-        // Step 3: Brief display of role, then lift curtain to reveal Hero
+        // Step 3: Beri waktu yang cukup nyaman untuk membaca kutipan role dan nama sebelum mengangkat tirai
         timer3 = setTimeout(() => {
           setStage('curtain-up');
           onComplete?.();
-        }, 550);
+        }, 1850);
       }
     }
 
@@ -138,7 +138,7 @@ export default function WeightSweepPreloader({
             y: stage === 'curtain-up' ? '-100%' : '0%',
           }}
           transition={{
-            duration: stage === 'curtain-up' ? 0.5 : 0.4,
+            duration: stage === 'curtain-up' ? 0.65 : 0.55,
             ease: [0.76, 0, 0.24, 1], // Smooth luxury cubic easing
           }}
           onAnimationComplete={() => {
@@ -154,7 +154,7 @@ export default function WeightSweepPreloader({
               text={role}
               trigger={stage === 'ink-rise' || stage === 'curtain-up'}
               animateBy="words"
-              delay={0.05}
+              delay={0.06}
               highlightWord="&"
               highlightClassName="text-[var(--accent-on-dark)] font-sans not-italic font-bold"
               className="font-serif italic text-[var(--bg)] text-center"
@@ -164,7 +164,7 @@ export default function WeightSweepPreloader({
           <motion.span
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 0.35, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 text-xs sm:text-sm text-[var(--accent-on-dark)] font-mono font-semibold tracking-widest uppercase"
           >
             {name}
