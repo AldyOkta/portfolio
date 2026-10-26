@@ -1,9 +1,9 @@
 import React from 'react';
 import { ExternalLink, ShieldCheck, Github } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
-import { portfolioData } from '../data/portfolioData';
-import AnimatedSection from './ui/AnimatedSection';
-import SpotlightCard from './ui/spotlight-card';
+import { useLanguage } from '@/context/LanguageContext';
+import { portfolioData } from '@/data/portfolioData';
+import AnimatedSection from '@/components/ui/AnimatedSection';
+import SpotlightCard from '@/components/ui/SpotlightCard';
 
 export default function Projects() {
   const { t, lang } = useLanguage();

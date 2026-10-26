@@ -1,5 +1,5 @@
 import React, { useState, useRef, useMemo, useLayoutEffect, useEffect } from 'react';
-import { loadGithubContributions, parseContributionDays } from '../../lib/github';
+import { loadGithubContributions, parseContributionDays } from '@/utils/github';
 
 const contributionLevelClasses = [
   'bg-zinc-200/80 dark:bg-zinc-800',

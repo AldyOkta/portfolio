@@ -1,9 +1,9 @@
 import React from 'react';
 import { Award } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
-import { portfolioData } from '../data/portfolioData';
-import AnimatedSection from './ui/AnimatedSection';
-import StaggerContainer, { StaggerItem } from './ui/StaggerContainer';
+import { useLanguage } from '@/context/LanguageContext';
+import { portfolioData } from '@/data/portfolioData';
+import AnimatedSection from '@/components/ui/AnimatedSection';
+import StaggerContainer, { StaggerItem } from '@/components/ui/StaggerContainer';
 
 export default function Certifications() {
   const { certifications } = portfolioData;

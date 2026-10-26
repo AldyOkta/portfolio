@@ -3,9 +3,9 @@
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Download, MapPin } from "lucide-react";
-import { cn } from "../../lib/utils";
-import TextMaskReveal from "./text-mask-reveal";
-import ShimmerButton from "./shimmer-button";
+import { cn } from "@/utils/cn";
+import TextMaskReveal from "./TextMaskReveal";
+import ShimmerButton from "./ShimmerButton";
 
 export function DotGridHero({
   name = "Aldy Oktaviano",

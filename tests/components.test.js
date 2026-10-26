@@ -12,7 +12,7 @@ test('GitHub card distinguishes loading, failure and a successful zero', async (
       contents: `
         import React from 'react';
         import { renderToStaticMarkup } from 'react-dom/server';
-        import { GithubCard } from './src/components/ui/contact-cards.jsx';
+        import { GithubCard } from './src/components/ui/ContactCards.jsx';
         export function render(days) {
           return renderToStaticMarkup(React.createElement(GithubCard, {
             github: { username: 'AldyOkta', days },
@@ -23,6 +23,9 @@ test('GitHub card distinguishes loading, failure and a successful zero', async (
       `,
     },
     bundle: true, write: false, platform: 'node', format: 'cjs', logLevel: 'silent',
+    alias: {
+      '@': './src',
+    },
   });
   const module = { exports: {} };
   new Function('require', 'module', 'exports', result.outputFiles[0].text)(createRequire(import.meta.url), module, module.exports);

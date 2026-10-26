@@ -1,6 +1,6 @@
 import React from 'react';
 import { useReducedMotion } from 'framer-motion';
-import { cn } from '../../lib/utils';
+import { cn } from '@/utils/cn';
 
 /**
  * ShimmerButton component inspired by 21st.dev / Magic UI.

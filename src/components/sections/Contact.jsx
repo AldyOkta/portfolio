@@ -1,10 +1,10 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
-import { portfolioData } from '../data/portfolioData';
-import { getWhatsAppUrl } from '../utils/contact';
-import ContactCards, { LinkedinIcon } from './ui/contact-cards';
-import ShimmerButton from './ui/shimmer-button';
+import { useLanguage } from '@/context/LanguageContext';
+import { portfolioData } from '@/data/portfolioData';
+import { getWhatsAppUrl } from '@/utils/contact';
+import ContactCards, { LinkedinIcon } from '@/components/ui/ContactCards';
+import ShimmerButton from '@/components/ui/ShimmerButton';
 
 export default function Contact() {
   const { personal } = portfolioData;

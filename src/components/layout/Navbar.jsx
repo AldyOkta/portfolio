@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, useScroll, useSpring, useReducedMotion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
-import { portfolioData } from '../data/portfolioData';
+import { useLanguage } from '@/context/LanguageContext';
+import { portfolioData } from '@/data/portfolioData';
 
 const SECTIONS = [
   { id: 'about', en: 'About', idLabel: 'Tentang' },
@@ -198,7 +198,6 @@ export default function Navbar() {
     }
   }, []);
 
-  const skipText = lang === 'en' ? 'Skip to content' : 'Lewati ke konten';
   const cvText = lang === 'en' ? 'Download CV' : 'Unduh CV';
   const isHeaderOpaque = scrolled || mobileMenuOpen;
 
@@ -213,14 +212,6 @@ export default function Navbar() {
           : 'bg-transparent border-b border-transparent'
       }`}
     >
-      {/* Accessibility: Skip to Content link */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--surface)] focus:text-[var(--text)] focus:border focus:border-[var(--accent)] focus:rounded-md focus:shadow-md focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
-      >
-        {skipText}
-      </a>
-
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Left: Logo (mono, 15px, --text) */}
         <a

@@ -1,7 +1,7 @@
 import React from 'react';
-import { useLanguage } from '../context/LanguageContext';
-import { portfolioData } from '../data/portfolioData';
-import AnimatedSection from './ui/AnimatedSection';
+import { useLanguage } from '@/context/LanguageContext';
+import { portfolioData } from '@/data/portfolioData';
+import AnimatedSection from '@/components/ui/AnimatedSection';
 
 export default function About() {
   const { education } = portfolioData;

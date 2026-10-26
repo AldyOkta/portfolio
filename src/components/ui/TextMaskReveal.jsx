@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { cn } from '../../lib/utils';
+import { cn } from '@/utils/cn';
 
 /**
  * TextMaskReveal component inspired by 21st.dev.

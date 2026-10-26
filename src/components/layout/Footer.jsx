@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useLanguage } from '../context/LanguageContext';
-import { portfolioData } from '../data/portfolioData';
-import { getEmail, getMailtoUrl, getWhatsAppUrl } from '../utils/contact';
+import { useLanguage } from '@/context/LanguageContext';
+import { portfolioData } from '@/data/portfolioData';
+import { getEmail, getMailtoUrl, getWhatsAppUrl } from '@/utils/contact';
 
 const NAV_LINKS = [
   { id: 'about', en: 'About', idLabel: 'Tentang' },

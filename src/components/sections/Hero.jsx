@@ -1,7 +1,7 @@
 import React from 'react';
-import { DotGridHero } from './ui/dot-grid-hero';
-import { useLanguage } from '../context/LanguageContext';
-import { portfolioData } from '../data/portfolioData';
+import { DotGridHero } from '@/components/ui/DotGridHero';
+import { useLanguage } from '@/context/LanguageContext';
+import { portfolioData } from '@/data/portfolioData';
 
 export default function Hero({ isLoaded = true }) {
   const { personal } = portfolioData;

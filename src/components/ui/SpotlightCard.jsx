@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback } from 'react';
 import { useReducedMotion } from 'framer-motion';
-import { cn } from '../../lib/utils';
+import { cn } from '@/utils/cn';
 
 /**
  * SpotlightCard component inspired by 21st.dev / Aceternity UI.

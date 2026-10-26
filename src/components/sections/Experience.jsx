@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useSpring, useReducedMotion } from 'framer-motion';
 import { Calendar, Building2, CheckCircle2 } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
-import { portfolioData } from '../data/portfolioData';
-import AnimatedSection from './ui/AnimatedSection';
+import { useLanguage } from '@/context/LanguageContext';
+import { portfolioData } from '@/data/portfolioData';
+import AnimatedSection from '@/components/ui/AnimatedSection';
 
 export default function Experience() {
   const { experiences } = portfolioData;

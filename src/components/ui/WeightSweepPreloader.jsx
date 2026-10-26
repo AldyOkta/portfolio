@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { BlurText } from './blur-text';
+import { BlurText } from './BlurText';
 
 export default function WeightSweepPreloader({
   onComplete,
@@ -79,13 +79,6 @@ export default function WeightSweepPreloader({
               <span className="font-mono text-xs text-[var(--accent)] hidden sm:inline">
                 VARIABLE SPECIMEN // WGHT {currentWeight}
               </span>
-              <button
-                type="button"
-                onClick={handleSkip}
-                className="text-xs font-medium px-2.5 py-1 rounded-full border border-[var(--border)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors cursor-pointer"
-              >
-                Lewati ➔
-              </button>
             </div>
           </div>
 
@@ -104,9 +97,8 @@ export default function WeightSweepPreloader({
                 {tickWeights.map((w) => (
                   <span
                     key={w}
-                    className={`text-xs transition-colors duration-150 ${
-                      currentWeight >= w ? 'text-[var(--accent)] font-bold' : 'text-[var(--text-muted)]/40'
-                    }`}
+                    className={`text-xs transition-colors duration-150 ${currentWeight >= w ? 'text-[var(--accent)] font-bold' : 'text-[var(--text-muted)]/40'
+                      }`}
                   >
                     {w}
                   </span>

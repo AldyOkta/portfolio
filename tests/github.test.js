@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { loadGithubContributions, parseContributionDays } from '../src/lib/github.js';
+import { loadGithubContributions, parseContributionDays } from '../src/utils/github.js';
 
 const day = { date: '2026-10-24', count: 3, level: 2 };
 

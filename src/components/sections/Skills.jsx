@@ -1,8 +1,8 @@
 import React from 'react';
-import { useLanguage } from '../context/LanguageContext';
-import { portfolioData } from '../data/portfolioData';
-import AnimatedSection from './ui/AnimatedSection';
-import StaggerContainer, { StaggerItem } from './ui/StaggerContainer';
+import { useLanguage } from '@/context/LanguageContext';
+import { portfolioData } from '@/data/portfolioData';
+import AnimatedSection from '@/components/ui/AnimatedSection';
+import StaggerContainer, { StaggerItem } from '@/components/ui/StaggerContainer';
 
 export default function Skills() {
   const { skills } = portfolioData;
@@ -25,7 +25,6 @@ export default function Skills() {
         </div>
 
         <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.08}>
-
           <StaggerItem>
             <div className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors p-8 flex flex-col justify-between h-full">
               <div>
@@ -76,7 +75,6 @@ export default function Skills() {
               </div>
             </div>
           </StaggerItem>
-
         </StaggerContainer>
       </div>
     </section>
